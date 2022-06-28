@@ -9,9 +9,9 @@ describe('translate', () => {
     expect(result1.text).toBe('Yes')
   })
 
-  test.only('should fetch google api and return result', () => {
-    const result = fetchTranslateInfo('你好')
+  test.only('should fetch google api and return result', async () => {
+    const result = await fetchTranslateInfo('你好')
     console.log(result)
-    expect(result).resolves.toEqual({ text: 'Hello' })
+    expect(result).toBe('Hello')
   })
 })
