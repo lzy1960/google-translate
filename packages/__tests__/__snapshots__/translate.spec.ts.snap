@@ -3,9 +3,55 @@
 exports[`translate > should fetch google api and return result 1`] = `
 ")]}'
 
-101
-[[\\"er\\",null,null,null,null,400,null,null,null,3],[\\"di\\",24],[\\"af.httprm\\",24,\\"-5850898650084057802\\"]]
+563
+[[\\"wrb.fr\\",\\"MkEWBc\\",\\"[[\\\\\\"Nǐ hǎo\\\\\\",null,\\\\\\"zh-CN\\\\\\",[[[0,[[[null,2]],[true]]]],2],[[\\\\\\"你好\\\\\\",null,null,2]]],[[[null,null,null,null,null,[[\\\\\\"Hello\\\\\\",null,null,null,[[\\\\\\"Hello\\\\\\",[4,5,11]],[\\\\\\"Hi\\\\\\",[4]],[\\\\\\"Hello there\\\\\\",[4]]]]]]],\\\\\\"en\\\\\\",1,\\\\\\"zh-CN\\\\\\",[\\\\\\"你好\\\\\\",\\\\\\"auto\\\\\\",\\\\\\"en\\\\\\",true]],\\\\\\"zh-CN\\\\\\",[\\\\\\"你好!\\\\\\",null,null,null,null,[[[\\\\\\"感叹词\\\\\\",[[\\\\\\"Hello!\\\\\\",null,[\\\\\\"你好!\\\\\\",\\\\\\"喂!\\\\\\"],1,true],[\\\\\\"Hi!\\\\\\",null,[\\\\\\"嗨!\\\\\\",\\\\\\"你好!\\\\\\"],1,true],[\\\\\\"Hallo!\\\\\\",null,[\\\\\\"你好!\\\\\\"],3,true]],\\\\\\"en\\\\\\",\\\\\\"zh-CN\\\\\\"]],3],null,null,\\\\\\"zh-CN\\\\\\",1]]\\",null,null,null,\\"generic\\"],[\\"di\\",28],[\\"af.httprm\\",27,\\"-6713672277802631657\\"]]
 25
-[[\\"e\\",4,null,null,137]]
+[[\\"e\\",4,null,null,635]]
 "
+`;
+
+exports[`translate > should fetch google api and return result 2`] = `
+[
+  [
+    "wrb.fr",
+    "MkEWBc",
+    "[[\\"Nǐ hǎo\\",null,\\"zh-CN\\",[[[0,[[[null,2]],[true]]]],2],[[\\"你好\\",null,null,2]]],[[[null,null,null,null,null,[[\\"Hello\\",null,null,null,[[\\"Hello\\",[4,5,11]],[\\"Hi\\",[4]],[\\"Hello there\\",[4]]]]]]],\\"en\\",1,\\"zh-CN\\",[\\"你好\\",\\"auto\\",\\"en\\",true]],\\"zh-CN\\",[\\"你好!\\",null,null,null,null,[[[\\"感叹词\\",[[\\"Hello!\\",null,[\\"你好!\\",\\"喂!\\"],1,true],[\\"Hi!\\",null,[\\"嗨!\\",\\"你好!\\"],1,true],[\\"Hallo!\\",null,[\\"你好!\\"],3,true]],\\"en\\",\\"zh-CN\\"]],3],null,null,\\"zh-CN\\",1]]",
+    null,
+    null,
+    null,
+    "generic",
+  ],
+  [
+    "di",
+    23,
+  ],
+  [
+    "af.httprm",
+    23,
+    "-4230975279875686577",
+  ],
+]
+`;
+
+exports[`translate > should translate some words 1`] = `
+[
+  [
+    "wrb.fr",
+    "MkEWBc",
+    "[[\\"Nǐ hǎo\\",null,\\"zh-CN\\",[[[0,[[[null,2]],[true]]]],2],[[\\"你好\\",null,null,2]]],[[[null,null,null,null,null,[[\\"Hello\\",null,null,null,[[\\"Hello\\",[4,5,11]],[\\"Hi\\",[4]],[\\"Hello there\\",[4]]]]]]],\\"en\\",1,\\"zh-CN\\",[\\"你好\\",\\"auto\\",\\"en\\",true]],\\"zh-CN\\",[\\"你好!\\",null,null,null,null,[[[\\"感叹词\\",[[\\"Hello!\\",null,[\\"你好!\\",\\"喂!\\"],1,true],[\\"Hi!\\",null,[\\"嗨!\\",\\"你好!\\"],1,true],[\\"Hallo!\\",null,[\\"你好!\\"],3,true]],\\"en\\",\\"zh-CN\\"]],3],null,null,\\"zh-CN\\",1]]",
+    null,
+    null,
+    null,
+    "generic",
+  ],
+  [
+    "di",
+    25,
+  ],
+  [
+    "af.httprm",
+    25,
+    "439813678853782960",
+  ],
+]
 `;
