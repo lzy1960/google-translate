@@ -1,8 +1,23 @@
 import fetch from 'node-fetch'
 import qs from 'qs'
-import { Options } from '../types/index'
+import { Options, Result } from '../types/index'
 
 export const translate = async (
+  text: string,
+  options: Options = {
+    from: 'auto',
+    to: 'en',
+    tld: 'cn',
+  }
+): Promise<Result> => {
+  const res = await getTranslateData(text, options)
+  const data = formatBodyToRawResult(res)
+  const result = getResult(data, options)
+
+  return result
+}
+
+export const getTranslateData = async (
   text: string,
   options: Options = {
     from: 'auto',
@@ -46,44 +61,41 @@ export const translate = async (
 
   const res = await fetch(fullUrl, {
     method: 'POST',
-    // headers: {
-    //   'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
-    // },
     body: formData,
   })
-  const data = await res.text()
-  // [
-  //   [
-  //     'wrb.fr',
-  //     'MkEWBc',
-  //     '[["Nǐ hǎo",null,"zh-CN",[[[0,[[[null,2]],[true]]]],2],[["你好",null,null,2]]],[[[null,null,null,null,null,[["Hello",null,null,null,[["Hello",[4,5,11]],["Hi",[4]],["Hello there",[4]]]]]]],"en",1,"zh-CN",["你好","auto","en",true]],"zh-CN",["你好!",null,null,null,null,[[["感叹词",[["Hello!",null,["你好!","喂!"],1,true],["Hi!",null,["嗨!","你好!"],1,true],["Hallo!",null,["你好!"],3,true]],"en","zh-CN"]],3],null,null,"zh-CN",1]]',
-  //     null,
-  //     null,
-  //     null,
-  //     'generic'
-  //   ],
-  //   [ 'di', 24 ],
-  //   [ 'af.httprm', 23, '-1257359032242568457' ]
-  // ]
+  return res.text()
+}
 
-  // 最上面的两行去掉以后
-  // 总共四行
-  // 第一行表示前两行的长度
-  // 第三行表示后两行的长度
-
-  // 开始处理数据
-  const body = data.slice(6)
+export const formatBodyToRawResult = (body: string) => {
+  const rawBody = body.slice(6)
   // 先找到第一个数字
-  const firstLen = /^\d+/.exec(body)![0]
+  const firstLen = /^\d+/.exec(rawBody)![0]
   // 找到第一个数组
-  const firstJson = body.slice(
+  const firstJson = rawBody.slice(
     firstLen.length,
     parseInt(firstLen) + firstLen.length
   )
 
   const rawResult = JSON.parse(firstJson)
-  const result = JSON.parse(rawResult[0][2])
-  console.log(result)
+  return JSON.parse(rawResult[0][2])
+}
 
-  return 'Hello'
+export const getResult = (data: any[] | null, options: Options): Result => {
+  const { from } = options
+  let text = ''
+  if (!data) {
+    return {
+      from,
+      pronunciation: null,
+      text: '',
+    }
+  }
+
+  const result: Result = {
+    from: data[0][2],
+    pronunciation: data[0][0],
+    text: data[1][0][0][5][0][0] || '',
+  }
+
+  return result
 }

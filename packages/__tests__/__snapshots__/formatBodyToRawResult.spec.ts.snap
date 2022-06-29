@@ -1,0 +1,73 @@
+// Vitest Snapshot v1
+
+exports[`formatBodyToRawResult > should get translate data with space 1`] = `
+[
+  [
+    null,
+    null,
+    "zh-CN",
+  ],
+  [
+    [
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        [
+          [],
+        ],
+      ],
+    ],
+    "en",
+    1,
+    "zh-CN",
+    [
+      " ",
+      "auto",
+      "en",
+      true,
+    ],
+  ],
+  "zh-CN",
+]
+`;
+
+exports[`formatBodyToRawResult > should get translate data without char 1`] = `null`;
+
+exports[`formatBodyToRawResult > should translate with space 1`] = `
+[
+  [
+    null,
+    null,
+    "zh-CN",
+  ],
+  [
+    [
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        [
+          [],
+        ],
+      ],
+    ],
+    "en",
+    1,
+    "zh-CN",
+    [
+      " ",
+      "auto",
+      "en",
+      true,
+    ],
+  ],
+  "zh-CN",
+]
+`;
+
+exports[`formatBodyToRawResult > should translate without char 1`] = `null`;

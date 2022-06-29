@@ -1,57 +1,81 @@
 // Vitest Snapshot v1
 
-exports[`translate > should fetch google api and return result 1`] = `
-")]}'
-
-563
-[[\\"wrb.fr\\",\\"MkEWBc\\",\\"[[\\\\\\"Nǐ hǎo\\\\\\",null,\\\\\\"zh-CN\\\\\\",[[[0,[[[null,2]],[true]]]],2],[[\\\\\\"你好\\\\\\",null,null,2]]],[[[null,null,null,null,null,[[\\\\\\"Hello\\\\\\",null,null,null,[[\\\\\\"Hello\\\\\\",[4,5,11]],[\\\\\\"Hi\\\\\\",[4]],[\\\\\\"Hello there\\\\\\",[4]]]]]]],\\\\\\"en\\\\\\",1,\\\\\\"zh-CN\\\\\\",[\\\\\\"你好\\\\\\",\\\\\\"auto\\\\\\",\\\\\\"en\\\\\\",true]],\\\\\\"zh-CN\\\\\\",[\\\\\\"你好!\\\\\\",null,null,null,null,[[[\\\\\\"感叹词\\\\\\",[[\\\\\\"Hello!\\\\\\",null,[\\\\\\"你好!\\\\\\",\\\\\\"喂!\\\\\\"],1,true],[\\\\\\"Hi!\\\\\\",null,[\\\\\\"嗨!\\\\\\",\\\\\\"你好!\\\\\\"],1,true],[\\\\\\"Hallo!\\\\\\",null,[\\\\\\"你好!\\\\\\"],3,true]],\\\\\\"en\\\\\\",\\\\\\"zh-CN\\\\\\"]],3],null,null,\\\\\\"zh-CN\\\\\\",1]]\\",null,null,null,\\"generic\\"],[\\"di\\",28],[\\"af.httprm\\",27,\\"-6713672277802631657\\"]]
-25
-[[\\"e\\",4,null,null,635]]
-"
-`;
-
-exports[`translate > should fetch google api and return result 2`] = `
+exports[`translate > should translate with punctuation 1`] = `
 [
   [
-    "wrb.fr",
-    "MkEWBc",
-    "[[\\"Nǐ hǎo\\",null,\\"zh-CN\\",[[[0,[[[null,2]],[true]]]],2],[[\\"你好\\",null,null,2]]],[[[null,null,null,null,null,[[\\"Hello\\",null,null,null,[[\\"Hello\\",[4,5,11]],[\\"Hi\\",[4]],[\\"Hello there\\",[4]]]]]]],\\"en\\",1,\\"zh-CN\\",[\\"你好\\",\\"auto\\",\\"en\\",true]],\\"zh-CN\\",[\\"你好!\\",null,null,null,null,[[[\\"感叹词\\",[[\\"Hello!\\",null,[\\"你好!\\",\\"喂!\\"],1,true],[\\"Hi!\\",null,[\\"嗨!\\",\\"你好!\\"],1,true],[\\"Hallo!\\",null,[\\"你好!\\"],3,true]],\\"en\\",\\"zh-CN\\"]],3],null,null,\\"zh-CN\\",1]]",
+    "Jīntiān, wǒ kàn dào yīgè chéngxù yuán!",
     null,
-    null,
-    null,
-    "generic",
+    "zh-CN",
+    [
+      [
+        [
+          0,
+          [
+            [
+              [
+                null,
+                12,
+              ],
+            ],
+            [
+              true,
+            ],
+          ],
+        ],
+      ],
+      12,
+    ],
+    [
+      [
+        "今天，我看到一个程序员！",
+        null,
+        null,
+        12,
+      ],
+    ],
   ],
   [
-    "di",
-    23,
+    [
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        [
+          [
+            "Today, I see a programmer!",
+            null,
+            null,
+            null,
+            [
+              [
+                "Today, I see a programmer!",
+                [
+                  5,
+                ],
+              ],
+              [
+                "Today, I saw a programmer!",
+                [
+                  11,
+                ],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ],
+    "en",
+    1,
+    "zh-CN",
+    [
+      "今天，我看到一个程序员！",
+      "auto",
+      "en",
+      true,
+    ],
   ],
-  [
-    "af.httprm",
-    23,
-    "-4230975279875686577",
-  ],
-]
-`;
-
-exports[`translate > should translate some words 1`] = `
-[
-  [
-    "wrb.fr",
-    "MkEWBc",
-    "[[\\"Nǐ hǎo\\",null,\\"zh-CN\\",[[[0,[[[null,2]],[true]]]],2],[[\\"你好\\",null,null,2]]],[[[null,null,null,null,null,[[\\"Hello\\",null,null,null,[[\\"Hello\\",[4,5,11]],[\\"Hi\\",[4]],[\\"Hello there\\",[4]]]]]]],\\"en\\",1,\\"zh-CN\\",[\\"你好\\",\\"auto\\",\\"en\\",true]],\\"zh-CN\\",[\\"你好!\\",null,null,null,null,[[[\\"感叹词\\",[[\\"Hello!\\",null,[\\"你好!\\",\\"喂!\\"],1,true],[\\"Hi!\\",null,[\\"嗨!\\",\\"你好!\\"],1,true],[\\"Hallo!\\",null,[\\"你好!\\"],3,true]],\\"en\\",\\"zh-CN\\"]],3],null,null,\\"zh-CN\\",1]]",
-    null,
-    null,
-    null,
-    "generic",
-  ],
-  [
-    "di",
-    25,
-  ],
-  [
-    "af.httprm",
-    25,
-    "439813678853782960",
-  ],
+  "zh-CN",
 ]
 `;
