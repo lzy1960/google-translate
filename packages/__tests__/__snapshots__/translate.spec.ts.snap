@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`translate > should fetch google api and return result 1`] = `
+")]}'
+
+101
+[[\\"er\\",null,null,null,null,400,null,null,null,3],[\\"di\\",24],[\\"af.httprm\\",24,\\"-5850898650084057802\\"]]
+25
+[[\\"e\\",4,null,null,137]]
+"
+`;
