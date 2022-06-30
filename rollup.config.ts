@@ -1,17 +1,18 @@
 import pkg from './package.json'
 import typescript from '@rollup/plugin-typescript'
+import commonjs from '@rollup/plugin-commonjs'
 
 export default {
   input: './packages/src/index.ts',
   output: [
     {
       format: 'cjs',
-      file: pkg.main,
+      file: pkg.module,
     },
     {
       format: 'esm',
-      file: pkg.module,
+      file: pkg.main,
     },
   ],
-  plugins: [typescript()],
+  plugins: [commonjs(), typescript()],
 }
