@@ -7,7 +7,7 @@ export default {
   output: [
     {
       format: 'cjs',
-      file: pkg.module,
+      file: pkg.common,
     },
     {
       format: 'esm',

@@ -1,9 +1,9 @@
 {
   "name": "@lzy1960storm/google-translate",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Translate api for Google Translate",
   "main": "lib/guide-google-translate.mjs.js",
-  "module": "lib/guide-google-translate.cjs.js",
+  "common": "lib/guide-google-translate.cjs.js",
   "directories": {
     "example": "example",
     "lib": "lib"
