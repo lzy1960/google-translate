@@ -1,17 +1,36 @@
 {
-  "name": "google-translate",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@lzy1960storm/google-translate",
+  "version": "0.0.1",
+  "description": "Translate api for Google Translate",
   "main": "lib/guide-google-translate.cjs.js",
   "module": "lib/guide-google-translate.esm.js",
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  },
   "scripts": {
     "build": "rollup -c rollup.config.ts",
     "test": "vitest"
   },
   "type": "module",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "google",
+    "translate",
+    "translator",
+    "translation",
+    "language",
+    "api"
+  ],
+  "bugs": {
+    "url": "https://github.com/lzy1960/google-translate/issues"
+  },
+  "homepage": "https://github.com/lzy1960/google-translate#readme",
+  "author": "lzy1960",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/lzy1960/google-translate"
+  },
+  "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.3",
     "@types/node-fetch": "^2.6.2",
