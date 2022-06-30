@@ -33,7 +33,9 @@
    ```
 
 3. 入参说明
+
    `translate`接收两个参数：text 和 options
+
    options 默认为：
 
    ```JS
