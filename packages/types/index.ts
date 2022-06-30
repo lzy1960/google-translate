@@ -1,11 +1,13 @@
+import { LanguageKey } from './language'
+
 export type Options = {
-  from: string
-  to: string
+  from: LanguageKey
+  to: LanguageKey
   tld?: string
 }
 
 export type Result = {
-  from: string
+  from: LanguageKey
   pronunciation: string | null
   text: string
 }

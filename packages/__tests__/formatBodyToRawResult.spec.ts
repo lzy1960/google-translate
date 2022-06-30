@@ -7,7 +7,7 @@ import {
 
 describe('formatBodyToRawResult', async () => {
   const res = await getTranslateData('你好')
-  it('should fetch google api and pick up translate used array', async () => {
+  it('should fetch google api and pick up translate used array', () => {
     const result = formatBodyToRawResult(res)
     expect(result).toMatchSnapshot()
   })
@@ -16,13 +16,28 @@ describe('formatBodyToRawResult', async () => {
     const result = getResult(data, { from: 'zh-CN', to: 'en' })
     expect(result.text).toBe('Hello')
   })
-  it.only('should get translate data without char', async () => {
+  it('should get translate data without char', async () => {
     const res = await getTranslateData('')
     const data = formatBodyToRawResult(res)
     expect(data).toMatchSnapshot()
   })
-  it.only('should get translate data with space', async () => {
+  it('should get translate data with space', async () => {
     const res = await getTranslateData(' ')
+    const data = formatBodyToRawResult(res)
+    expect(data).toMatchSnapshot()
+  })
+  it('should get translate data with punctuation', async () => {
+    const res = await getTranslateData('今天，我看到一个程序员！')
+    const data = formatBodyToRawResult(res)
+    expect(data).toMatchSnapshot()
+  })
+  it('should get translate data with confusing punctuation', async () => {
+    const res = await getTranslateData('这,...是,..什.么???？12123123')
+    const data = formatBodyToRawResult(res)
+    expect(data).toMatchSnapshot()
+  })
+  it('should get translate data with long sentences', async () => {
+    const res = await getTranslateData('床前明月光，疑是地上霜。举头望明月，低头思故乡。')
     const data = formatBodyToRawResult(res)
     expect(data).toMatchSnapshot()
   })

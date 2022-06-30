@@ -2,31 +2,34 @@ import fetch from 'node-fetch'
 import qs from 'qs'
 import { Options, Result } from '../types/index'
 
+const DEFAULT_OPTIONS: Options = {
+  from: 'auto',
+  to: 'en',
+  tld: 'cn',
+}
+
 export const translate = async (
   text: string,
-  options: Options = {
-    from: 'auto',
-    to: 'en',
-    tld: 'cn',
-  }
+  options: Options = DEFAULT_OPTIONS
 ): Promise<Result> => {
-  const res = await getTranslateData(text, options)
+  const _options = {
+    ...DEFAULT_OPTIONS,
+    ...options,
+  }
+
+  const res = await getTranslateData(text, _options)
   const data = formatBodyToRawResult(res)
-  const result = getResult(data, options)
+  const result = getResult(data, _options)
 
   return result
 }
 
-export const getTranslateData = async (
+export const getTranslateData: Promise<string> = async (
   text: string,
-  options: Options = {
-    from: 'auto',
-    to: 'en',
-    tld: 'cn',
-  }
+  options: Options = DEFAULT_OPTIONS
 ) => {
   const { from, to, tld } = options
-  const url = 'https://translate.google.' + tld
+  const url = 'https://translate.google.1' + tld
   const rpcids = 'MkEWBc'
   const params = {
     rpcids,
@@ -59,11 +62,17 @@ export const getTranslateData = async (
     'f.req': JSON.stringify(_formData),
   })
 
-  const res = await fetch(fullUrl, {
-    method: 'POST',
-    body: formData,
-  })
-  return res.text()
+  try {
+    const res = await fetch(fullUrl, {
+      method: 'POST',
+      body: formData,
+    })
+    if (res) {
+      return res.text()
+    }
+  } catch (error) {
+    throw new Error('BAD_REQUEST')
+  }
 }
 
 export const formatBodyToRawResult = (body: string) => {
@@ -82,19 +91,17 @@ export const formatBodyToRawResult = (body: string) => {
 
 export const getResult = (data: any[] | null, options: Options): Result => {
   const { from } = options
-  let text = ''
-  if (!data) {
-    return {
-      from,
-      pronunciation: null,
-      text: '',
-    }
+  const result: Result = {
+    from,
+    pronunciation: null,
+    text: '',
   }
 
-  const result: Result = {
-    from: data[0][2],
-    pronunciation: data[0][0],
-    text: data[1][0][0][5][0][0] || '',
+  if (data) {
+    const rawResultArr = data[1][0][0][5]
+    if (rawResultArr) {
+      result.text = rawResultArr.map((item: string[]) => item[0]).join(' ')
+    }
   }
 
   return result

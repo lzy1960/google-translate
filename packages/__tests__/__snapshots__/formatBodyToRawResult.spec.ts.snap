@@ -1,5 +1,450 @@
 // Vitest Snapshot v1
 
+exports[`formatBodyToRawResult > should fetch google api and pick up translate used array 1`] = `
+[
+  [
+    "Nǐ hǎo",
+    null,
+    "zh-CN",
+    [
+      [
+        [
+          0,
+          [
+            [
+              [
+                null,
+                2,
+              ],
+            ],
+            [
+              true,
+            ],
+          ],
+        ],
+      ],
+      2,
+    ],
+    [
+      [
+        "你好",
+        null,
+        null,
+        2,
+      ],
+    ],
+  ],
+  [
+    [
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        [
+          [
+            "Hello",
+            null,
+            null,
+            null,
+            [
+              [
+                "Hello",
+                [
+                  4,
+                  5,
+                  11,
+                ],
+              ],
+              [
+                "Hi",
+                [
+                  4,
+                ],
+              ],
+              [
+                "Hello there",
+                [
+                  4,
+                ],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ],
+    "en",
+    1,
+    "zh-CN",
+    [
+      "你好",
+      "auto",
+      "en",
+      true,
+    ],
+  ],
+  "zh-CN",
+  [
+    "你好!",
+    null,
+    null,
+    null,
+    null,
+    [
+      [
+        [
+          "感叹词",
+          [
+            [
+              "Hello!",
+              null,
+              [
+                "你好!",
+                "喂!",
+              ],
+              1,
+              true,
+            ],
+            [
+              "Hi!",
+              null,
+              [
+                "嗨!",
+                "你好!",
+              ],
+              1,
+              true,
+            ],
+            [
+              "Hallo!",
+              null,
+              [
+                "你好!",
+              ],
+              3,
+              true,
+            ],
+          ],
+          "en",
+          "zh-CN",
+        ],
+      ],
+      3,
+    ],
+    null,
+    null,
+    "zh-CN",
+    1,
+  ],
+]
+`;
+
+exports[`formatBodyToRawResult > should get translate data with confusing punctuation 1`] = `
+[
+  [
+    "Zhè,... Shì,.. Shén. Me????12123123",
+    null,
+    "zh-CN",
+    [
+      [
+        [
+          0,
+          [
+            [
+              [
+                null,
+                16,
+              ],
+            ],
+            [
+              true,
+            ],
+          ],
+        ],
+      ],
+      24,
+    ],
+    [
+      [
+        "这,...是,..什.么???？",
+        null,
+        null,
+        16,
+      ],
+      [
+        "12123123",
+        null,
+        16,
+        24,
+      ],
+    ],
+  ],
+  [
+    [
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        [
+          [
+            "what is this????",
+            null,
+            null,
+            null,
+            [
+              [
+                "what is this????",
+                [
+                  2,
+                ],
+              ],
+              [
+                "What's this????",
+                [
+                  4,
+                ],
+              ],
+              [
+                "This, ... yes, .. ??? ????",
+                [
+                  5,
+                ],
+              ],
+              [
+                "This, ... yes, .. ??????",
+                [
+                  11,
+                ],
+              ],
+            ],
+          ],
+          [
+            "12123123",
+            null,
+            true,
+            null,
+            [
+              [
+                "12123123",
+                [
+                  5,
+                ],
+              ],
+              [
+                "1212313",
+                [
+                  11,
+                ],
+              ],
+            ],
+          ],
+        ],
+        "zh-CN",
+      ],
+    ],
+    "en",
+    1,
+    "zh-CN",
+    [
+      "这,...是,..什.么???？12123123",
+      "auto",
+      "en",
+      true,
+    ],
+  ],
+  "zh-CN",
+]
+`;
+
+exports[`formatBodyToRawResult > should get translate data with long sentences 1`] = `
+[
+  [
+    "Chuáng qián míngyuèguāng, yí shì dìshàng shuāng. Jǔ tóu wàng míng yuè, dītóu sī gùxiāng.",
+    null,
+    "zh-CN",
+    [
+      [
+        [
+          0,
+          [
+            [
+              [
+                null,
+                12,
+              ],
+            ],
+            [
+              true,
+            ],
+          ],
+        ],
+      ],
+      24,
+    ],
+    [
+      [
+        "床前明月光，疑是地上霜。",
+        null,
+        null,
+        12,
+      ],
+      [
+        "举头望明月，低头思故乡。",
+        null,
+        12,
+        24,
+      ],
+    ],
+  ],
+  [
+    [
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        [
+          [
+            "The moonlight in front of the bed is suspected to be on the ground.",
+            null,
+            null,
+            null,
+            [
+              [
+                "The moonlight in front of the bed is suspected to be on the ground.",
+                [
+                  5,
+                ],
+              ],
+              [
+                "The moonlight in front of the bed is suspected to be frost on the ground.",
+                [
+                  11,
+                ],
+              ],
+            ],
+          ],
+          [
+            "Looking at the Mingyue, he bowed his head to his hometown.",
+            null,
+            true,
+            null,
+            [
+              [
+                "Looking at the Mingyue, he bowed his head to his hometown.",
+                [
+                  5,
+                ],
+              ],
+              [
+                "Looking at the Mingyue, he bowed his head and thought of his hometown.",
+                [
+                  11,
+                ],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ],
+    "en",
+    1,
+    "zh-CN",
+    [
+      "床前明月光，疑是地上霜。举头望明月，低头思故乡。",
+      "auto",
+      "en",
+      true,
+    ],
+  ],
+  "zh-CN",
+]
+`;
+
+exports[`formatBodyToRawResult > should get translate data with punctuation 1`] = `
+[
+  [
+    "Jīntiān, wǒ kàn dào yīgè chéngxù yuán!",
+    null,
+    "zh-CN",
+    [
+      [
+        [
+          0,
+          [
+            [
+              [
+                null,
+                12,
+              ],
+            ],
+            [
+              true,
+            ],
+          ],
+        ],
+      ],
+      12,
+    ],
+    [
+      [
+        "今天，我看到一个程序员！",
+        null,
+        null,
+        12,
+      ],
+    ],
+  ],
+  [
+    [
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        [
+          [
+            "Today, I see a programmer!",
+            null,
+            null,
+            null,
+            [
+              [
+                "Today, I see a programmer!",
+                [
+                  5,
+                ],
+              ],
+              [
+                "Today, I saw a programmer!",
+                [
+                  11,
+                ],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ],
+    "en",
+    1,
+    "zh-CN",
+    [
+      "今天，我看到一个程序员！",
+      "auto",
+      "en",
+      true,
+    ],
+  ],
+  "zh-CN",
+]
+`;
+
 exports[`formatBodyToRawResult > should get translate data with space 1`] = `
 [
   [
@@ -35,39 +480,3 @@ exports[`formatBodyToRawResult > should get translate data with space 1`] = `
 `;
 
 exports[`formatBodyToRawResult > should get translate data without char 1`] = `null`;
-
-exports[`formatBodyToRawResult > should translate with space 1`] = `
-[
-  [
-    null,
-    null,
-    "zh-CN",
-  ],
-  [
-    [
-      [
-        null,
-        null,
-        null,
-        null,
-        null,
-        [
-          [],
-        ],
-      ],
-    ],
-    "en",
-    1,
-    "zh-CN",
-    [
-      " ",
-      "auto",
-      "en",
-      true,
-    ],
-  ],
-  "zh-CN",
-]
-`;
-
-exports[`formatBodyToRawResult > should translate without char 1`] = `null`;
