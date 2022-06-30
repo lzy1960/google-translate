@@ -24,12 +24,12 @@ export const translate = async (
   return result
 }
 
-export const getTranslateData: Promise<string> = async (
+export const getTranslateData = async (
   text: string,
   options: Options = DEFAULT_OPTIONS
 ) => {
   const { from, to, tld } = options
-  const url = 'https://translate.google.1' + tld
+  const url = 'https://translate.google.' + tld
   const rpcids = 'MkEWBc'
   const params = {
     rpcids,
@@ -62,17 +62,11 @@ export const getTranslateData: Promise<string> = async (
     'f.req': JSON.stringify(_formData),
   })
 
-  try {
-    const res = await fetch(fullUrl, {
-      method: 'POST',
-      body: formData,
-    })
-    if (res) {
-      return res.text()
-    }
-  } catch (error) {
-    throw new Error('BAD_REQUEST')
-  }
+  const res = await fetch(fullUrl, {
+    method: 'POST',
+    body: formData,
+  })
+  return res.text()
 }
 
 export const formatBodyToRawResult = (body: string) => {
