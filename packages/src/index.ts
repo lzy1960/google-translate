@@ -82,7 +82,7 @@ export const formatBodyToRawResult = (body: string) => {
 
 export const getResult = (data: any[] | null, options: Options): Result => {
   const { from } = options
-  let text = ''
+  const text = ''
   if (!data) {
     return {
       from,
