@@ -2,8 +2,10 @@
   "name": "google-translate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/guide-google-translate.cjs.js",
+  "module": "lib/guide-google-translate.esm.js",
   "scripts": {
+    "build": "rollup -c rollup.config.ts",
     "test": "vitest"
   },
   "type": "module",
@@ -11,8 +13,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.3",
     "@types/node-fetch": "^2.6.2",
     "@types/qs": "^6.9.7",
+    "rollup": "^2.75.7",
+    "tslib": "^2.4.0",
     "typescript": "^4.7.4",
     "vitest": "^0.16.0"
   },
