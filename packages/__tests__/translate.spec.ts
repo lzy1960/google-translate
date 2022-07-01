@@ -16,6 +16,10 @@ describe('translate', async () => {
 
     const res2 = await translate('猴子')
     expect(res2.text).toBe('monkey')
+
+    const res3 = await translate('你好')
+    expect(res3.text).toBe('Hello')
+    expect(res3.pronunciation).toBe('Nǐ hǎo')
   })
   it.skip('should translate with punctuation', async () => {
     const res = await translate('今天，我看到一个程序员！')
@@ -38,14 +42,12 @@ describe('translate', async () => {
   })
   it('should translate with confusing punctuation', async () => {
     const res = await translate('这,...是,..什.么???？12123123')
-    console.log(res)
     expect(res.text).toBe('what is this???? 12123123')
   })
   it('should translate long sentences', async () => {
     const res = await translate(
       '床前明月光，疑是地上霜。举头望明月，低头思故乡。'
     )
-    console.log(res)
     expect(res.text).toBe(
       'The bright moonlight in front of the bed was suspected to be frost on the ground. Raise your head to look at the bright moon, and bow your head to think of your hometown.'
     )

@@ -95,6 +95,7 @@ export const getResult = (data: any[] | null, options: Options): Result => {
     const rawResultArr = data[1][0][0][5]
     if (rawResultArr) {
       result.text = rawResultArr.map((item: string[]) => item[0]).join(' ')
+      result.pronunciation = data[0][0]
     }
   }
 

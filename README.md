@@ -50,7 +50,7 @@
    ```JS
    {
     from: "zh-CN", // 源语言
-    pronunciation: null, // 标点符号
+    pronunciation: null, // 读音
     text: "Hello" // 目标语言结果
    }
    ```
