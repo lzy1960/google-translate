@@ -1,8 +1,7 @@
 import pkg from './package.json'
 import typescript from '@rollup/plugin-typescript'
-import commonjs from '@rollup/plugin-commonjs'
 
-export default {
+module.exports = {
   input: './packages/src/index.ts',
   output: [
     {
@@ -14,5 +13,5 @@ export default {
       file: pkg.main,
     },
   ],
-  plugins: [commonjs(), typescript()],
+  plugins: [typescript()],
 }

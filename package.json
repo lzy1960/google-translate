@@ -1,9 +1,9 @@
 {
   "name": "@lzy1960storm/google-translate",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Translate api for Google Translate",
   "main": "lib/guide-google-translate.mjs.js",
-  "common": "lib/guide-google-translate.cjs.js",
+  "common": "lib/guide-google-translate.cjs",
   "directories": {
     "example": "example",
     "lib": "lib"
@@ -32,15 +32,14 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-typescript": "^8.3.3",
     "@types/node-fetch": "^2.6.2",
     "@types/qs": "^6.9.7",
-    "rollup": "^2.75.7",
-    "tslib": "^2.4.0",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0",
     "eslint": "^8.18.0",
+    "rollup": "^2.75.7",
+    "tslib": "^2.4.0",
     "typescript": "^4.7.4",
     "vitest": "^0.16.0"
   },
