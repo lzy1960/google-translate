@@ -1,10 +1,5 @@
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { translate } from '../src/index'
-import {
-  getTranslateData,
-  formatBodyToRawResult,
-  getResult,
-} from '../src/index'
 
 describe('translate', async () => {
   it('should translate more words from zh-CN to en', async () => {
@@ -50,6 +45,17 @@ describe('translate', async () => {
     )
     expect(res.text).toBe(
       'The bright moonlight in front of the bed was suspected to be frost on the ground. Raise your head to look at the bright moon, and bow your head to think of your hometown.'
+    )
+    const resMobile = await translate(
+      '床前明月光，疑是地上霜。举头望明月，低头思故乡。',
+      {
+        from: 'auto',
+        to: 'en',
+        isMobile: true,
+      }
+    )
+    expect(resMobile.text).toBe(
+      'The moonlight in front of the bed is suspected to be on the ground. Looking at the Mingyue, he bowed his head to his hometown.'
     )
   })
   it('should translate from en to zh-CN', async () => {

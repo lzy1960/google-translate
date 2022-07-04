@@ -1,21 +1,24 @@
 import fetch from 'node-fetch'
 import qs from 'qs'
-import { Options, Result } from '../types/index'
+import { Options, Result, BatchExecute } from '../types/index'
 
 const DEFAULT_OPTIONS: Options = {
   from: 'auto',
   to: 'en',
   tld: 'cn',
+  isMobile: false,
+}
+const DEFAULT_HEADERS = {
+  'User-Agent':
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
+  'x-goog-batchexecute-bgr': '',
 }
 
 export const translate = async (
   text: string,
   options: Options = DEFAULT_OPTIONS
 ): Promise<Result> => {
-  const _options = {
-    ...DEFAULT_OPTIONS,
-    ...options,
-  }
+  const _options = Object.assign({}, DEFAULT_OPTIONS, options)
 
   const res = await getTranslateData(text, _options)
   const data = formatBodyToRawResult(res)
@@ -47,6 +50,14 @@ export const getTranslateData = async (
   const fullUrl =
     url + '/_/TranslateWebserverUi/data/batchexecute?' + qs.stringify(params)
 
+  // 设置是否是移动端的请求头
+  const _headers = { ...DEFAULT_HEADERS }
+  if (options.isMobile) {
+    _headers['x-goog-batchexecute-bgr'] = BatchExecute['MOBILE']
+  } else {
+    _headers['x-goog-batchexecute-bgr'] = BatchExecute['PC']
+  }
+
   const _formData = [
     [
       [
@@ -65,6 +76,7 @@ export const getTranslateData = async (
   const res = await fetch(fullUrl, {
     method: 'POST',
     body: formData,
+    headers: _headers,
   })
   return res.text()
 }
