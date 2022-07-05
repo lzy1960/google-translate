@@ -1,7 +1,8 @@
-# google-translate
+# google-translate [![OSCS Status](https://www.oscs1024.com/platform/badge/lzy1960/google-translate.svg?size=small)](https://www.oscs1024.com/project/lzy1960/google-translate?ref=badge_small)
 
-[![OSCS Status](https://www.oscs1024.com/platform/badge/lzy1960/google-translate.svg?size=small)](https://www.oscs1024.com/project/lzy1960/google-translate?ref=badge_small)
 感谢开源社区 OSCS 的关注！
+
+## 项目说明
 
 - TDD 开发流程
 - 使用 ts 编写
@@ -29,7 +30,7 @@
     tld: 'cn'
    }
    const res1 = await translate('你好', options)
-   console.log(res1) // { "from": "zh-CN", "pronunciation": null, "text": "Hello" }
+   console.log(res1) // { "from": "zh-CN", "pronunciation": "Nǐ hǎo", "text": "Hello" }
    ```
 
 3. 入参说明
