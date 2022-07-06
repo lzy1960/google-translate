@@ -23,7 +23,7 @@ export const translate = async (
 
   // 传入的from和to防错校验
   const isRightLanguage = checkFromAndTo(options)
-  if (isRightLanguage) {
+  if (!isRightLanguage) {
     throw new Error('not support this language')
   }
 
