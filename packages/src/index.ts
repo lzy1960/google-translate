@@ -1,6 +1,7 @@
 import fetch from 'node-fetch'
 import qs from 'qs'
 import { Options, Result, BatchExecute } from '../types/index'
+import { Language } from '../types/language'
 
 const DEFAULT_OPTIONS: Options = {
   from: 'auto',
@@ -17,8 +18,14 @@ const DEFAULT_HEADERS = {
 export const translate = async (
   text: string,
   options: Options = DEFAULT_OPTIONS
-): Promise<Result> => {
+): Promise<Result | never> => {
   const _options = Object.assign({}, DEFAULT_OPTIONS, options)
+
+  // 传入的from和to防错校验
+  const isRightLanguage = checkFromAndTo(options)
+  if (isRightLanguage) {
+    throw new Error('not support this language')
+  }
 
   const res = await getTranslateData(text, _options)
   const data = formatBodyToRawResult(res)
@@ -112,4 +119,12 @@ export const getResult = (data: any[] | null, options: Options): Result => {
   }
 
   return result
+}
+export const checkFromAndTo = (options: Options): boolean => {
+  const { from, to } = options
+  if (from in Language && to in Language) {
+    return true
+  } else {
+    return false
+  }
 }

@@ -1,6 +1,6 @@
 export type LanguageKey = keyof typeof Language
 
-enum Language {
+export enum Language {
   'auto' = 'Automatic',
   'af' = 'Afrikaans',
   'sq' = 'Albanian',
