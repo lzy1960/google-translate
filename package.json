@@ -1,6 +1,6 @@
 {
   "name": "@lzy1960storm/google-translate",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Translate api for Google Translate",
   "main": "lib/guide-google-translate.mjs.js",
   "common": "lib/guide-google-translate.cjs",
@@ -10,7 +10,8 @@
   },
   "scripts": {
     "build": "rollup -c rollup.config.ts",
-    "test": "vitest"
+    "test": "vitest",
+    "pub": "pnpx nrm use npm & pnpm publish & pnpx nrm use taobao"
   },
   "type": "module",
   "keywords": [
