@@ -3,7 +3,7 @@ import {
   getTranslateData,
   formatBodyToRawResult,
   getResult,
-} from '../src/index'
+} from '../src/translate'
 
 describe('formatBodyToRawResult', async () => {
   const res = await getTranslateData('你好')
@@ -37,7 +37,9 @@ describe('formatBodyToRawResult', async () => {
     expect(data).toMatchSnapshot()
   })
   it('should get translate data with long sentences', async () => {
-    const res = await getTranslateData('床前明月光，疑是地上霜。举头望明月，低头思故乡。')
+    const res = await getTranslateData(
+      '床前明月光，疑是地上霜。举头望明月，低头思故乡。'
+    )
     const data = formatBodyToRawResult(res)
     expect(data).toMatchSnapshot()
   })

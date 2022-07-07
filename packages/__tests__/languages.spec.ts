@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { checkFromAndTo } from '../src/index'
+import { checkFromAndTo } from '../src/translate'
 
 describe('languages', () => {
   it('should return boolean when called', () => {
