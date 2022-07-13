@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 import qs from 'qs'
-import { Options, Result, BatchExecute } from '../types/index'
+import { Options, Result, BatchExecute, ErrorCode } from '../types/index'
 import { Language } from '../types/language'
 
 const DEFAULT_OPTIONS: Options = {
@@ -9,10 +9,11 @@ const DEFAULT_OPTIONS: Options = {
   tld: 'cn',
   isMobile: false,
 }
+const batchKey = 'x-goog-batchexecute-bgr'
 const DEFAULT_HEADERS = {
   'User-Agent':
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
-  'x-goog-batchexecute-bgr': '',
+  [batchKey]: '',
 }
 
 export const translate = async (
@@ -37,7 +38,7 @@ export const translate = async (
 export const getTranslateData = async (
   text: string,
   options: Options = DEFAULT_OPTIONS
-) => {
+): Promise<string | never> => {
   const { from, to, tld } = options
   const url = 'https://translate.google.' + tld
   const rpcids = 'MkEWBc'
@@ -60,9 +61,9 @@ export const getTranslateData = async (
   // 设置是否是移动端的请求头
   const _headers = { ...DEFAULT_HEADERS }
   if (options.isMobile) {
-    _headers['x-goog-batchexecute-bgr'] = BatchExecute['MOBILE']
+    _headers[batchKey] = BatchExecute['MOBILE']
   } else {
-    _headers['x-goog-batchexecute-bgr'] = BatchExecute['PC']
+    _headers[batchKey] = BatchExecute['PC']
   }
 
   const _formData = [
@@ -80,12 +81,16 @@ export const getTranslateData = async (
     'f.req': JSON.stringify(_formData),
   })
 
-  const res = await fetch(fullUrl, {
-    method: 'POST',
-    body: formData,
-    headers: _headers,
-  })
-  return res.text()
+  try {
+    const res = await fetch(fullUrl, {
+      method: 'POST',
+      body: formData,
+      headers: _headers,
+    })
+    return res.text()
+  } catch (error) {
+    throw new Error(ErrorCode.BAD_REQUEST)
+  }
 }
 
 export const formatBodyToRawResult = (body: string) => {

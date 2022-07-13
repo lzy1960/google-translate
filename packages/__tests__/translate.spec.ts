@@ -65,7 +65,7 @@ describe('translate', async () => {
     })
     expect(res.text).toBe('好了，我完成了！')
   })
-  it('should throw Error when get wrong from and to', async () => {
+  it('should throw Error when get wrong from and to', () => {
     const fn = translate('ok, Im done!', {
       from: 'notInLanguage',
       to: 'zh-CN',
