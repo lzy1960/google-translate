@@ -11,7 +11,7 @@
   "scripts": {
     "build": "rollup -c rollup.config.ts",
     "test": "vitest",
-    "pub": "pnpx nrm use npm & pnpm publish & pnpx nrm use taobao"
+    "pub": "pnpx nrm use npm | pnpm publish | pnpx nrm use taobao"
   },
   "type": "module",
   "keywords": [
