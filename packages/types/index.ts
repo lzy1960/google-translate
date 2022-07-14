@@ -4,6 +4,7 @@ export type Options = {
   from: LanguageKey
   to: LanguageKey
   tld?: string
+  type?: Lowercase<RcpIdsKeys>
   isMobile?: boolean
 }
 
@@ -21,3 +22,10 @@ export enum BatchExecute {
 export enum ErrorCode {
   BAD_REQUEST = 'BAD_REQUEST',
 }
+
+export enum RpcIds {
+  DEFAULT = 'MkEWBc',
+  WORD = 'rPsWke',
+}
+
+export type RcpIdsKeys = keyof typeof RpcIds
