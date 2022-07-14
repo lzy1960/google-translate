@@ -44,7 +44,7 @@ describe('formatBodyToRawResult', async () => {
     const data = formatBodyToRawResult(res)
     expect(data).toMatchSnapshot()
   })
-  it.only('should throw error when bad request', async () => {
+  it('should throw error when bad request', async () => {
     const fn = getTranslateData('你好', {
       tld: 'error',
     })
