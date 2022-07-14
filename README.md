@@ -13,11 +13,11 @@
 1. 安装依赖包
 
    ```JS
-   npm i @lzy1960storm/google-translate
+   npm i @lzy1960/google-translate
    // OR
-   yarn add @lzy1960storm/google-translate
+   yarn add @lzy1960/google-translate
    // OR
-   pnpm i @lzy1960storm/google-translate
+   pnpm i @lzy1960/google-translate
    ```
 
 2. 调用
