@@ -2,13 +2,13 @@ import fetch from 'node-fetch'
 import qs from 'qs'
 import {
   Options,
-  Result,
   BatchExecute,
   ErrorCode,
   RpcIds,
+  Result,
 } from '../types/index'
 import { Language } from '../types/language'
-import { RcpIdsKeys } from '../types/index'
+import { RcpIdsKeys, DefaultResult, WordResult } from '../types/index'
 import { extend } from '../shared'
 
 const DEFAULT_OPTIONS: Options = {
@@ -121,22 +121,24 @@ export const formatBodyToRawResult = (body: string) => {
 }
 
 export const getResult = (data: any[] | null, options: Options): Result => {
-  const { from } = options
-  const result: Result = {
-    from,
-    pronunciation: null,
-    text: '',
-  }
+  const _options = extend({}, DEFAULT_OPTIONS, options)
+  const { from, type } = _options
 
   if (data) {
-    const rawResultArr = data[1][0][0][5]
-    if (rawResultArr) {
-      result.text = rawResultArr.map((item: string[]) => item[0]).join(' ')
-      result.pronunciation = data[0][0]
+    switch (type) {
+      case 'default':
+        return processDefault(data)
+
+      case 'word':
+        return processWord(data)
+    }
+  } else {
+    return {
+      from,
+      pronunciation: null,
+      text: '',
     }
   }
-
-  return result
 }
 export const checkFromAndTo = (options: Options): boolean => {
   const { from, to } = options
@@ -144,5 +146,54 @@ export const checkFromAndTo = (options: Options): boolean => {
     return true
   } else {
     return false
+  }
+}
+
+function processDefault(data: any[]): DefaultResult {
+  const result: DefaultResult = {}
+  const rawResultArr = data[1][0][0][5]
+  if (rawResultArr) {
+    result.text = rawResultArr.map((item: string[]) => item[0]).join(' ')
+    result.pronunciation = data[0][0]
+  }
+  return result
+}
+function processWord(data: any[]): WordResult {
+  const result: WordResult = {
+    text: data[0][0],
+    common: [],
+  }
+  result.common = data[0][5][0].map(item => ({
+    type: item[0],
+    words: item[1].map(word => ({
+      word: word[0],
+      explains: word[2],
+      frequency: word[3],
+    })),
+  }))
+  return {
+    text: '你好！',
+    common: [
+      {
+        type: '感叹词',
+        words: [
+          {
+            word: 'Hello!',
+            explains: ['你好！', '喂！'],
+            frequency: 1,
+          },
+          {
+            word: 'Hi!',
+            explains: ['嗨！', '你好！'],
+            frequency: 1,
+          },
+          {
+            word: 'Hallo!',
+            explains: ['你好！'],
+            frequency: 3,
+          },
+        ],
+      },
+    ],
   }
 }

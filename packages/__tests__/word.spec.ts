@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { formatBodyToRawResult, getTranslateData } from '../src/translate'
+import {
+  formatBodyToRawResult,
+  getTranslateData,
+  translate,
+} from '../src/translate'
 
 describe('word', () => {
   it('should get snapshot when type is word', async () => {
@@ -11,5 +15,38 @@ describe('word', () => {
     })
     const data = formatBodyToRawResult(res)
     expect(data).toMatchSnapshot()
+  })
+  it('should get snapshot when type is word', async () => {
+    const res = await translate('你好', {
+      from: 'zh-CN',
+      to: 'en',
+      tld: 'cn',
+      type: 'word',
+    })
+    expect(res).toStrictEqual({
+      text: '你好！',
+      common: [
+        {
+          type: '感叹词',
+          words: [
+            {
+              word: 'Hello!',
+              explains: ['你好！', '喂！'],
+              frequency: 1,
+            },
+            {
+              word: 'Hi!',
+              explains: ['嗨！', '你好！'],
+              frequency: 1,
+            },
+            {
+              word: 'Hallo!',
+              explains: ['你好！'],
+              frequency: 3,
+            },
+          ],
+        },
+      ],
+    })
   })
 })

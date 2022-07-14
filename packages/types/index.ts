@@ -8,10 +8,28 @@ export type Options = {
   isMobile?: boolean
 }
 
-export type Result = {
+export type Result = DefaultResult | WordResult
+
+export type DefaultResult = {
   from: LanguageKey
   pronunciation: string | null
   text: string
+}
+
+export type WordResult = {
+  text: string
+  common: CommonType[]
+}
+
+type CommonType = {
+  type: string
+  words: WordExplain[]
+}
+
+type WordExplain = {
+  word: string
+  explains: string[]
+  frequency: number
 }
 
 export enum BatchExecute {
