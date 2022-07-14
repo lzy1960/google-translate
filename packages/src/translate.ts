@@ -1,12 +1,21 @@
 import fetch from 'node-fetch'
 import qs from 'qs'
-import { Options, Result, BatchExecute, ErrorCode } from '../types/index'
+import {
+  Options,
+  Result,
+  BatchExecute,
+  ErrorCode,
+  RpcIds,
+} from '../types/index'
 import { Language } from '../types/language'
+import { RcpIdsKeys } from '../types/index'
+import { extend } from '../shared'
 
 const DEFAULT_OPTIONS: Options = {
   from: 'auto',
   to: 'en',
   tld: 'cn',
+  type: 'default',
   isMobile: false,
 }
 const batchKey = 'x-goog-batchexecute-bgr'
@@ -20,7 +29,7 @@ export const translate = async (
   text: string,
   options: Options = DEFAULT_OPTIONS
 ): Promise<Result | never> => {
-  const _options = Object.assign({}, DEFAULT_OPTIONS, options)
+  const _options = extend({}, DEFAULT_OPTIONS, options)
 
   // 传入的from和to防错校验
   const isRightLanguage = checkFromAndTo(options)
@@ -39,9 +48,10 @@ export const getTranslateData = async (
   text: string,
   options: Options = DEFAULT_OPTIONS
 ): Promise<string | never> => {
-  const { from, to, tld } = options
+  const _options = extend({}, DEFAULT_OPTIONS, options)
+  const { from, to, tld, type } = _options
   const url = 'https://translate.google.' + tld
-  const rpcids = 'MkEWBc'
+  const rpcids = RpcIds[type!.toUpperCase() as RcpIdsKeys]
   const params = {
     rpcids,
     'source-path': '/',
@@ -60,7 +70,7 @@ export const getTranslateData = async (
 
   // 设置是否是移动端的请求头
   const _headers = { ...DEFAULT_HEADERS }
-  if (options.isMobile) {
+  if (_options.isMobile) {
     _headers[batchKey] = BatchExecute['MOBILE']
   } else {
     _headers[batchKey] = BatchExecute['PC']
@@ -70,7 +80,10 @@ export const getTranslateData = async (
     [
       [
         rpcids,
-        JSON.stringify([[text, from, to, true], [null]]),
+        JSON.stringify([
+          [text, from, to, true],
+          type === 'word' ? null : [null],
+        ]),
         null,
         'generic',
       ],
