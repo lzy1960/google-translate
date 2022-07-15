@@ -55,7 +55,7 @@
    // type
    {
     from: "zh-CN", // 源语言
-    pronunciation: null, // 读音
+    pronunciation: "Nǐ hǎo", // 读音
     text: "Hello" // 目标语言结果
    }
    // word
