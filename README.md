@@ -27,10 +27,11 @@
    const options = {
     from: 'auto',
     to: 'en',
-    tld: 'cn'
+    tld: 'cn',
+    type: 'default'
    }
-   const res1 = await translate('你好', options)
-   console.log(res1) // { "from": "zh-CN", "pronunciation": "Nǐ hǎo", "text": "Hello" }
+   const res = await translate('你好', options)
+   console.log(res) // { "from": "zh-CN", "pronunciation": "Nǐ hǎo", "text": "Hello" }
    ```
 
 3. 入参说明
@@ -44,15 +45,43 @@
     from: 'auto', // 源语言
     to: 'en', // 目标语言
     tld: 'cn', // 服务地址
-    isMobile: false // 是否是移动端(移动端和pc端的返回值不一样)
+    type: 'default', // 类型 'default' / 'word'
+    isMobile: false // TODO:是否是移动端(移动端和pc端的返回值不一样)
    }
    ```
 
 4. 返回结果说明
    ```JS
+   // type
    {
     from: "zh-CN", // 源语言
     pronunciation: null, // 读音
     text: "Hello" // 目标语言结果
+   }
+   // word
+   {
+   text: '你好!',
+      common: [
+        {
+          type: '感叹词',
+          words: [
+            {
+              word: 'Hello!',
+              explains: ['你好!', '喂!'],
+              frequency: 1,
+            },
+            {
+              word: 'Hi!',
+              explains: ['嗨!', '你好!'],
+              frequency: 1,
+            },
+            {
+              word: 'Hallo!',
+              explains: ['你好!'],
+              frequency: 3,
+            },
+          ],
+        },
+      ],
    }
    ```
