@@ -132,12 +132,11 @@ export const getResult = (data: any[] | null, options: Options): Result => {
       case 'word':
         return processWord(data)
     }
-  } else {
-    return {
-      from,
-      pronunciation: null,
-      text: '',
-    }
+  }
+  return {
+    from,
+    pronunciation: null,
+    text: '',
   }
 }
 export const checkFromAndTo = (options: Options): boolean => {
@@ -163,37 +162,13 @@ function processWord(data: any[]): WordResult {
     text: data[0][0],
     common: [],
   }
-  result.common = data[0][5][0].map(item => ({
+  result.common = data[0][5][0].map((item: any) => ({
     type: item[0],
-    words: item[1].map(word => ({
+    words: item[1].map((word: any) => ({
       word: word[0],
       explains: word[2],
       frequency: word[3],
     })),
   }))
-  return {
-    text: '你好！',
-    common: [
-      {
-        type: '感叹词',
-        words: [
-          {
-            word: 'Hello!',
-            explains: ['你好！', '喂！'],
-            frequency: 1,
-          },
-          {
-            word: 'Hi!',
-            explains: ['嗨！', '你好！'],
-            frequency: 1,
-          },
-          {
-            word: 'Hallo!',
-            explains: ['你好！'],
-            frequency: 3,
-          },
-        ],
-      },
-    ],
-  }
+  return result
 }

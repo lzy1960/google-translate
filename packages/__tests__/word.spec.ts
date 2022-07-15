@@ -24,24 +24,24 @@ describe('word', () => {
       type: 'word',
     })
     expect(res).toStrictEqual({
-      text: '你好！',
+      text: '你好!',
       common: [
         {
           type: '感叹词',
           words: [
             {
               word: 'Hello!',
-              explains: ['你好！', '喂！'],
+              explains: ['你好!', '喂!'],
               frequency: 1,
             },
             {
               word: 'Hi!',
-              explains: ['嗨！', '你好！'],
+              explains: ['嗨!', '你好!'],
               frequency: 1,
             },
             {
               word: 'Hallo!',
-              explains: ['你好！'],
+              explains: ['你好!'],
               frequency: 3,
             },
           ],
