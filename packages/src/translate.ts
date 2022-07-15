@@ -152,6 +152,7 @@ function processDefault(data: any[]): DefaultResult {
   const result: DefaultResult = {}
   const rawResultArr = data[1][0][0][5]
   if (rawResultArr) {
+    result.from = data[0][2]
     result.text = rawResultArr.map((item: string[]) => item[0]).join(' ')
     result.pronunciation = data[0][0]
   }

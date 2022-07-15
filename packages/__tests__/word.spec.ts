@@ -17,7 +17,7 @@ describe('word', () => {
     const data = formatBodyToRawResult(res)
     expect(data).toMatchSnapshot()
   })
-  it('should get snapshot when type is word', async () => {
+  it('should get result when type is word', async () => {
     const res = await translate('你好', {
       from: 'zh-CN',
       to: 'en',
