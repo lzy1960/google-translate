@@ -39,6 +39,7 @@ export enum BatchExecute {
 
 export enum ErrorCode {
   BAD_REQUEST = 'BAD_REQUEST',
+  NO_RESULT = 'NO_RESULT',
 }
 
 export enum RpcIds {

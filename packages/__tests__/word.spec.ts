@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { ErrorCode } from '../types/index'
 import {
   formatBodyToRawResult,
   getTranslateData,
@@ -48,5 +49,14 @@ describe('word', () => {
         },
       ],
     })
+  })
+  it('should throw error when no result', async () => {
+    const fn = translate('abcd', {
+      from: 'zh-CN',
+      to: 'en',
+      tld: 'cn',
+      type: 'word',
+    })
+    await expect(fn).rejects.toThrowError(ErrorCode['NO_RESULT'])
   })
 })

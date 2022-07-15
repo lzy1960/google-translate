@@ -157,7 +157,10 @@ function processDefault(data: any[]): DefaultResult {
   }
   return result
 }
-function processWord(data: any[]): WordResult {
+function processWord(data: any[]): WordResult | never {
+  if (!data.length) {
+    throw new Error(ErrorCode['NO_RESULT'])
+  }
   const result: WordResult = {
     text: data[0][0],
     common: [],
