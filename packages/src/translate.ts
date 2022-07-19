@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import qs from 'qs'
+import { stringify } from 'qs'
 import {
   Options,
   BatchExecute,
@@ -66,7 +66,7 @@ export const getTranslateData = async (
   }
 
   const fullUrl =
-    url + '/_/TranslateWebserverUi/data/batchexecute?' + qs.stringify(params)
+    url + '/_/TranslateWebserverUi/data/batchexecute?' + stringify(params)
 
   // 设置是否是移动端的请求头
   const _headers = { ...DEFAULT_HEADERS }
