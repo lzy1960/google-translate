@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { translate } from '../src/index'
+import { LanguageKey } from '../types/language'
+import { DefaultResult } from '../types/index'
 
 describe('translate', async () => {
   it('should translate more words from zh-CN to en', async () => {
@@ -12,7 +14,7 @@ describe('translate', async () => {
     const res2 = await translate('猴子')
     expect(res2.text).toBe('monkey')
 
-    const res3 = await translate('你好')
+    const res3 = (await translate('你好')) as DefaultResult
     expect(res3.text).toBe('Hello')
     expect(res3.pronunciation).toBe('Nǐ hǎo')
   })
@@ -67,7 +69,7 @@ describe('translate', async () => {
   })
   it('should throw Error when get wrong from and to', () => {
     const fn = translate('ok, Im done!', {
-      from: 'notInLanguage',
+      from: 'notInLanguage' as unknown as LanguageKey,
       to: 'zh-CN',
     })
     expect(fn).rejects.toThrowError('not support this language')

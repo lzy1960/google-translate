@@ -46,6 +46,8 @@ describe('formatBodyToRawResult', async () => {
   })
   it('should throw error when bad request', async () => {
     const fn = getTranslateData('你好', {
+      from: 'auto',
+      to: 'en',
       tld: 'error',
     })
     await expect(fn).rejects.toThrowError(ErrorCode.BAD_REQUEST)

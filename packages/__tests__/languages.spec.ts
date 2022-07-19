@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { checkFromAndTo } from '../src/translate'
+import { LanguageKey } from '../types/language'
 
 describe('languages', () => {
   it('should return boolean when called', () => {
@@ -9,18 +10,18 @@ describe('languages', () => {
     })
     expect(isChecked).toBe(true)
     const errorFrom = checkFromAndTo({
-      from: 'errorFrom',
+      from: 'errorFrom' as unknown as LanguageKey,
       to: 'en',
     })
     expect(errorFrom).toBe(false)
     const errorTo = checkFromAndTo({
       from: 'zh-CN',
-      to: 'errorTo',
+      to: 'errorTo' as unknown as LanguageKey,
     })
     expect(errorTo).toBe(false)
     const errorCheck = checkFromAndTo({
-      from: 'errorFrom',
-      to: 'errorTo',
+      from: 'errorFrom' as unknown as LanguageKey,
+      to: 'errorTo' as unknown as LanguageKey,
     })
     expect(errorCheck).toBe(false)
   })
