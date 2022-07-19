@@ -1,5 +1,7 @@
 import pkg from './package.json'
 import typescript from '@rollup/plugin-typescript'
+import { terser } from 'rollup-plugin-terser'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 module.exports = {
   input: './packages/src/index.ts',
@@ -13,5 +15,5 @@ module.exports = {
       file: pkg.main,
     },
   ],
-  plugins: [typescript()],
+  plugins: [visualizer(), terser(), typescript()],
 }
