@@ -149,7 +149,7 @@ export const checkFromAndTo = (options: Options): boolean => {
 }
 
 function processDefault(data: any[]): DefaultResult {
-  const result: DefaultResult = {}
+  const result = {} as DefaultResult
   const rawResultArr = data[1][0][0][5]
   if (rawResultArr) {
     result.from = data[0][2]
