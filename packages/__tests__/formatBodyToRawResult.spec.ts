@@ -37,7 +37,7 @@ describe('formatBodyToRawResult', async () => {
     const data = formatBodyToRawResult(res)
     expect(data).toMatchSnapshot()
   })
-  it('should get translate data with long sentences', async () => {
+  it.skip('should get translate data with long sentences', async () => {
     const res = await getTranslateData(
       '床前明月光，疑是地上霜。举头望明月，低头思故乡。'
     )

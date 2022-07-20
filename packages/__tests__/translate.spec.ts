@@ -41,7 +41,7 @@ describe('translate', async () => {
     const res = await translate('这,...是,..什.么???？12123123')
     expect(res.text).toBe('what is this???? 12123123')
   })
-  it('should translate long sentences', async () => {
+  it.skip('should translate long sentences', async () => {
     const res = await translate(
       '床前明月光，疑是地上霜。举头望明月，低头思故乡。'
     )
