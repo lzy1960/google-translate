@@ -12,7 +12,6 @@
     "build": "rollup -c rollup.config.ts",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "coveralls": "pnpm coverage | coveralls",
     "pub": "pnpx nrm use npm | pnpm publish --access public | pnpx nrm use taobao"
   },
   "type": "module",
@@ -43,8 +42,6 @@
     "@types/qs": "^6.9.7",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
-    "c8": "^7.12.0",
-    "coveralls": "^3.1.1",
     "eslint": "^8.20.0",
     "rollup": "^2.77.0",
     "rollup-plugin-terser": "^7.0.2",
