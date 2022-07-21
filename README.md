@@ -1,6 +1,23 @@
-# google-translate [![OSCS Status](https://www.oscs1024.com/platform/badge/lzy1960/google-translate.svg?size=small)](https://www.oscs1024.com/project/lzy1960/google-translate?ref=badge_small)
+<h1 align="center">google-translate</h1>
 
-感谢开源社区 OSCS 的关注！
+<div align="center">
+
+[![OSCS Status](https://www.oscs1024.com/platform/badge/lzy1960/google-translate.svg?size=small)](https://www.oscs1024.com/project/lzy1960/google-translate?ref=badge_small)
+
+[![Build Status][travis-image]][travis-url] [![NPM version][npm-image]][npm-url] [![NPM downloads][download-image]][download-url] [![codecov][codecov-image]][codecov-url]
+
+[travis-image]: https://app.travis-ci.com/lzy1960/google-translate.svg?branch=main&status=passed
+[travis-url]: https://app.travis-ci.com/lzy1960/google-translate
+[npm-image]: http://img.shields.io/npm/v/@lzy1960/google-translate.svg
+[npm-url]: http://npmjs.org/package/@lzy1960/google-translate
+[download-image]: https://img.shields.io/npm/dm/lzy1960/google-translate.svg
+[download-url]: https://npmjs.org/package/lzy1960/google-translate
+[codecov-image]: https://img.shields.io/npm/dm/lzy1960/google-translate.svg
+[codecov-url]: https://npmjs.org/package/lzy1960/google-translate
+
+</div>
+
+> 感谢开源社区 OSCS 的关注！
 
 ## 项目说明
 
