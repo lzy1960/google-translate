@@ -10,8 +10,8 @@
 [npm-url]: http://npmjs.org/package/@lzy1960/google-translate
 [download-image]: https://img.shields.io/npm/dm/@lzy1960/google-translate.svg
 [download-url]: https://npmjs.org/package/@lzy1960/google-translate
-[codecov-image]: https://img.shields.io/npm/dm/lzy1960/google-translate.svg
-[codecov-url]: https://npmjs.org/package/lzy1960/google-translate
+[codecov-image]: https://codecov.io/gh/lzy1960/google-translate/branch/main/graph/badge.svg?token=O686OAR35N
+[codecov-url]: https://codecov.io/gh/lzy1960/google-translate
 
 </div>
 
