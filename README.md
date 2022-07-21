@@ -1,8 +1,8 @@
 <h1 align="center">google-translate</h1>
 
-<div align="center">
+<p align="center">一款谷歌翻译api的插件</p>
 
-[![OSCS Status](https://www.oscs1024.com/platform/badge/lzy1960/google-translate.svg?size=small)](https://www.oscs1024.com/project/lzy1960/google-translate?ref=badge_small)
+<div align="center">
 
 [![NPM version][npm-image]][npm-url] [![NPM downloads][download-image]][download-url] [![codecov][codecov-image]][codecov-url]
 
@@ -13,9 +13,11 @@
 [codecov-image]: https://codecov.io/gh/lzy1960/google-translate/branch/main/graph/badge.svg?token=O686OAR35N
 [codecov-url]: https://codecov.io/gh/lzy1960/google-translate
 
-</div>
+[![OSCS Status](https://www.oscs1024.com/platform/badge/lzy1960/google-translate.svg?size=small)](https://www.oscs1024.com/project/lzy1960/google-translate?ref=badge_small)
 
-> 感谢开源社区 OSCS 的关注！
+感谢开源社区 OSCS 的关注！
+
+</div>
 
 ## 项目说明
 
@@ -67,7 +69,7 @@
 
 4. 返回结果说明
    ```JS
-   // type
+   // default
    {
     from: "zh-CN", // 源语言
     pronunciation: "Nǐ hǎo", // 读音
@@ -100,3 +102,12 @@
       ],
    }
    ```
+
+## options 参数说明
+
+| 参数 | 说明     | 类型                | 默认值    |
+| ---- | -------- | ------------------- | --------- |
+| from | 源语言   | string              | 'auto'    |
+| to   | 目标语言 | string              | 'en'      |
+| tld  | 地区     | string              | 'cn'      |
+| type | 类型     | `default` \| `word` | 'default' |
