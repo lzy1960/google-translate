@@ -22,7 +22,7 @@ const batchKey = 'x-goog-batchexecute-bgr'
 const DEFAULT_HEADERS = {
   'User-Agent':
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
-  [batchKey]: '',
+  [batchKey]: BatchExecute['MOBILE'],
 }
 
 export const translate = async (
@@ -70,11 +70,11 @@ export const getTranslateData = async (
 
   // 设置是否是移动端的请求头
   const _headers = { ...DEFAULT_HEADERS }
-  if (_options.isMobile) {
-    _headers[batchKey] = BatchExecute['MOBILE']
-  } else {
-    _headers[batchKey] = BatchExecute['PC']
-  }
+  // if (_options.isMobile) {
+  //   _headers[batchKey] = BatchExecute['MOBILE']
+  // } else {
+  //   _headers[batchKey] = BatchExecute['PC']
+  // }
 
   const _formData = [
     [
