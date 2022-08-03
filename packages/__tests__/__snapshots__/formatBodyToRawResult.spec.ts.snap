@@ -259,6 +259,125 @@ exports[`formatBodyToRawResult > should get translate data with confusing punctu
 ]
 `;
 
+exports[`formatBodyToRawResult > should get translate data with confusing punctuation 2`] = `
+[
+  [
+    "Zhè,... Shì,.. Shén. Me????12123123",
+    null,
+    "zh-CN",
+    [
+      [
+        [
+          0,
+          [
+            [
+              [
+                null,
+                16,
+              ],
+            ],
+            [
+              true,
+            ],
+          ],
+        ],
+      ],
+      24,
+    ],
+    [
+      [
+        "这,...是,..什.么???？",
+        null,
+        null,
+        16,
+      ],
+      [
+        "12123123",
+        null,
+        16,
+        24,
+      ],
+    ],
+  ],
+  [
+    [
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        [
+          [
+            "what is this????",
+            null,
+            null,
+            null,
+            [
+              [
+                "what is this????",
+                [
+                  2,
+                ],
+              ],
+              [
+                "What's this????",
+                [
+                  4,
+                ],
+              ],
+              [
+                "This, ... yes, .. ??? ????",
+                [
+                  5,
+                ],
+              ],
+              [
+                "This, ... yes, .. ??????",
+                [
+                  11,
+                ],
+              ],
+            ],
+          ],
+          [
+            "12123123",
+            null,
+            true,
+            null,
+            [
+              [
+                "12123123",
+                [
+                  5,
+                ],
+              ],
+              [
+                "1212313",
+                [
+                  11,
+                ],
+              ],
+            ],
+          ],
+        ],
+        "zh-CN",
+      ],
+    ],
+    "en",
+    1,
+    "zh-CN",
+    [
+      "这,...是,..什.么???？12123123",
+      "auto",
+      "en",
+      true,
+    ],
+  ],
+  "zh-CN",
+]
+`;
+
 exports[`formatBodyToRawResult > should get translate data with long sentences 1`] = `
 [
   [
@@ -366,6 +485,86 @@ exports[`formatBodyToRawResult > should get translate data with long sentences 1
 `;
 
 exports[`formatBodyToRawResult > should get translate data with punctuation 1`] = `
+[
+  [
+    "Jīntiān, wǒ kàn dào yīgè chéngxù yuán!",
+    null,
+    "zh-CN",
+    [
+      [
+        [
+          0,
+          [
+            [
+              [
+                null,
+                12,
+              ],
+            ],
+            [
+              true,
+            ],
+          ],
+        ],
+      ],
+      12,
+    ],
+    [
+      [
+        "今天，我看到一个程序员！",
+        null,
+        null,
+        12,
+      ],
+    ],
+  ],
+  [
+    [
+      [
+        null,
+        null,
+        null,
+        null,
+        null,
+        [
+          [
+            "Today, I see a programmer!",
+            null,
+            null,
+            null,
+            [
+              [
+                "Today, I see a programmer!",
+                [
+                  5,
+                ],
+              ],
+              [
+                "Today, I saw a programmer!",
+                [
+                  11,
+                ],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ],
+    "en",
+    1,
+    "zh-CN",
+    [
+      "今天，我看到一个程序员！",
+      "auto",
+      "en",
+      true,
+    ],
+  ],
+  "zh-CN",
+]
+`;
+
+exports[`formatBodyToRawResult > should get translate data with punctuation 2`] = `
 [
   [
     "Jīntiān, wǒ kàn dào yīgè chéngxù yuán!",

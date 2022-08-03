@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { ErrorCode } from '../types/index'
 import {
   getTranslateData,
@@ -8,6 +8,11 @@ import {
 
 describe('formatBodyToRawResult', async () => {
   const res = await getTranslateData('你好')
+  const snapFn = async (text: string) => {
+    const res = await getTranslateData(text)
+    const data = formatBodyToRawResult(res)
+    expect(data).toMatchSnapshot()
+  }
   it('should fetch google api and pick up translate used array', () => {
     const result = formatBodyToRawResult(res)
     expect(result).toMatchSnapshot()
@@ -18,24 +23,16 @@ describe('formatBodyToRawResult', async () => {
     expect(result.text).toBe('Hello')
   })
   it('should get translate data without char', async () => {
-    const res = await getTranslateData('')
-    const data = formatBodyToRawResult(res)
-    expect(data).toMatchSnapshot()
+    await snapFn('')
   })
   it('should get translate data with space', async () => {
-    const res = await getTranslateData(' ')
-    const data = formatBodyToRawResult(res)
-    expect(data).toMatchSnapshot()
+    await snapFn(' ')
   })
   it('should get translate data with punctuation', async () => {
-    const res = await getTranslateData('今天，我看到一个程序员！')
-    const data = formatBodyToRawResult(res)
-    expect(data).toMatchSnapshot()
+    await snapFn('今天，我看到一个程序员！')
   })
   it('should get translate data with confusing punctuation', async () => {
-    const res = await getTranslateData('这,...是,..什.么???？12123123')
-    const data = formatBodyToRawResult(res)
-    expect(data).toMatchSnapshot()
+    await snapFn('这,...是,..什.么???？12123123')
   })
   it.skip('should get translate data with long sentences', async () => {
     const res = await getTranslateData(
