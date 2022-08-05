@@ -1,3 +1,5 @@
 /.vscode
+/.github
 /example
+/coverage
 stats.html
