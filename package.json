@@ -1,6 +1,6 @@
 {
   "name": "@lzy1960/google-translate",
-  "version": "0.2.1-beta2",
+  "version": "0.2.1",
   "description": "Translate api for Google Translate",
   "main": "lib/guide-google-translate.mjs.js",
   "common": "lib/guide-google-translate.cjs",
@@ -9,8 +9,7 @@
     "lib": "lib"
   },
   "files": [
-    "lib",
-    "packages"
+    "lib"
   ],
   "scripts": {
     "build": "rollup -c rollup.config.ts",
