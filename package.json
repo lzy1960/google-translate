@@ -1,6 +1,6 @@
 {
   "name": "@lzy1960/google-translate",
-  "version": "0.2.0",
+  "version": "0.2.1-beta",
   "description": "Translate api for Google Translate",
   "main": "lib/guide-google-translate.mjs.js",
   "common": "lib/guide-google-translate.cjs",
@@ -8,6 +8,10 @@
     "example": "example",
     "lib": "lib"
   },
+  "files": [
+    "lib",
+    "packages"
+  ],
   "scripts": {
     "build": "rollup -c rollup.config.ts",
     "test": "vitest",
@@ -15,6 +19,7 @@
     "pub": "pnpx nrm use npm | pnpm publish --access public | pnpx nrm use taobao"
   },
   "type": "module",
+  "sideEffects": false,
   "keywords": [
     "google",
     "translate",
@@ -45,6 +50,7 @@
     "c8": "^7.12.0",
     "eslint": "^8.20.0",
     "rollup": "^2.77.2",
+    "rollup-plugin-gzip": "^3.0.1",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-visualizer": "^5.7.1",
     "tslib": "^2.4.0",

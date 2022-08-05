@@ -1,5 +1,6 @@
 import pkg from './package.json'
 import typescript from '@rollup/plugin-typescript'
+import gzipPlugin from 'rollup-plugin-gzip'
 import { terser } from 'rollup-plugin-terser'
 import { visualizer } from 'rollup-plugin-visualizer'
 
@@ -15,5 +16,5 @@ module.exports = {
       file: pkg.main,
     },
   ],
-  plugins: [visualizer(), terser(), typescript()],
+  plugins: [visualizer(), terser(), typescript(),gzipPlugin()],
 }

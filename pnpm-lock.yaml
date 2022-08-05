@@ -11,6 +11,7 @@ specifiers:
   node-fetch: ^3.2.9
   qs: ^6.11.0
   rollup: ^2.77.2
+  rollup-plugin-gzip: ^3.0.1
   rollup-plugin-terser: ^7.0.2
   rollup-plugin-visualizer: ^5.7.1
   tslib: ^2.4.0
@@ -30,6 +31,7 @@ devDependencies:
   c8: 7.12.0
   eslint: 8.20.0
   rollup: 2.77.2
+  rollup-plugin-gzip: 3.0.1_rollup@2.77.2
   rollup-plugin-terser: 7.0.2_rollup@2.77.2
   rollup-plugin-visualizer: 5.7.1_rollup@2.77.2
   tslib: 2.4.0
@@ -1547,6 +1549,15 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: true
+
+  /rollup-plugin-gzip/3.0.1_rollup@2.77.2:
+    resolution: {integrity: sha512-yzyrbe5cn/3yTqtGpVb+0kQXiqKLZpNpRTGpItc11b8c9IhawpjZPPLMkh1Q7gl6UsHIVjcw9LeEdvom9H3klw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      rollup: '>=2.0.0'
+    dependencies:
+      rollup: 2.77.2
     dev: true
 
   /rollup-plugin-terser/7.0.2_rollup@2.77.2:
