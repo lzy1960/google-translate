@@ -18,16 +18,13 @@ describe('translate', async () => {
     expect(res3.text).toBe('Hello')
     expect(res3.pronunciation).toBe('Nǐ hǎo')
   })
-
-  const translateFn = async (source: string, result: string) => {
-    const res = await translate(source)
-    expect(res.text).toBe(result)
-  }
   it.skip('should translate with punctuation', async () => {
-    await translateFn('今天，我看到一个程序员！', 'Today, I saw a programmer!')
+    const res = await translate('今天，我看到一个程序员！')
+    expect(res.text).toBe('Today, I saw a programmer!')
   })
   it('should translate without char', async () => {
-    await translateFn('', '')
+    const res = await translate('')
+    expect(res.text).toBe('')
   })
   it('should translate with space', async () => {
     const res = await translate(' ')
@@ -41,10 +38,8 @@ describe('translate', async () => {
     expect(res4.text).toBe('what is this?')
   })
   it('should translate with confusing punctuation', async () => {
-    await translateFn(
-      '这,...是,..什.么???？12123123',
-      'what is this???? 12123123'
-    )
+    const res = await translate('这,...是,..什.么???？12123123')
+    expect(res.text).toBe('what is this???? 12123123')
   })
   it.skip('should translate long sentences', async () => {
     const res = await translate(
