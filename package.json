@@ -12,7 +12,7 @@
     "build": "rollup -c rollup.config.ts",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "pub": "pnpx nrm use npm | pnpm publish --access public | pnpx nrm use taobao",
+    "release": "bumpp package.json --commit --push --tag && pnpm -r publish --access public",
     "lint": "eslint ."
   },
   "type": "module",
@@ -44,6 +44,7 @@
     "@types/node-fetch": "^2.6.2",
     "@types/qs": "^6.9.7",
     "@vitest/coverage-c8": "^0.23.2",
+    "bumpp": "^8.2.1",
     "c8": "^7.12.0",
     "eslint": "^8.23.1",
     "rollup": "^2.79.0",
