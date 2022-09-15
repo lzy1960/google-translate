@@ -43,10 +43,10 @@ describe('translate', async () => {
   })
   it.skip('should translate long sentences', async () => {
     const res = await translate(
-      '床前明月光，疑是地上霜。举头望明月，低头思故乡。'
+      '床前明月光，疑是地上霜。举头望明月，低头思故乡。',
     )
     expect(res.text).toBe(
-      'The bright moonlight in front of the bed was suspected to be frost on the ground. Raise your head to look at the bright moon, and bow your head to think of your hometown.'
+      'The bright moonlight in front of the bed was suspected to be frost on the ground. Raise your head to look at the bright moon, and bow your head to think of your hometown.',
     )
     const resMobile = await translate(
       '床前明月光，疑是地上霜。举头望明月，低头思故乡。',
@@ -54,10 +54,10 @@ describe('translate', async () => {
         from: 'auto',
         to: 'en',
         isMobile: true,
-      }
+      },
     )
     expect(resMobile.text).toBe(
-      'The moonlight in front of the bed is suspected to be on the ground. Looking at the Mingyue, he bowed his head to his hometown.'
+      'The moonlight in front of the bed is suspected to be on the ground. Looking at the Mingyue, he bowed his head to his hometown.',
     )
   })
   it('should translate from en to zh-CN', async () => {

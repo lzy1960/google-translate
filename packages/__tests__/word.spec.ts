@@ -57,6 +57,6 @@ describe('word', () => {
       tld: 'cn',
       type: 'word',
     })
-    await expect(fn).rejects.toThrowError(ErrorCode['NO_RESULT'])
+    await expect(fn).rejects.toThrowError(ErrorCode.NO_RESULT)
   })
 })

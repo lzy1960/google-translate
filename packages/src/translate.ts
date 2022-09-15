@@ -22,12 +22,12 @@ const batchKey = 'x-goog-batchexecute-bgr'
 const DEFAULT_HEADERS = {
   'User-Agent':
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
-  [batchKey]: BatchExecute['MOBILE'],
+  [batchKey]: BatchExecute.MOBILE,
 }
 
 export const translate = async (
   text: string,
-  options: Options = DEFAULT_OPTIONS
+  options: Options = DEFAULT_OPTIONS,
 ): Promise<Result | never> => {
   const _options = extend({}, DEFAULT_OPTIONS, options)
 
@@ -46,12 +46,12 @@ export const translate = async (
 
 export const getTranslateData = async (
   text: string,
-  options: Options = DEFAULT_OPTIONS
+  options: Options = DEFAULT_OPTIONS,
 ): Promise<string | never> => {
   const _options = extend({}, DEFAULT_OPTIONS, options)
   const { from, to, tld, type } = _options
-  const url = 'https://translate.google.' + tld
-  const rpcids = RpcIds[type!.toUpperCase() as RcpIdsKeys]
+  const url = `https://translate.google.${tld}`
+  const rpcids = RpcIds[type?.toUpperCase() as RcpIdsKeys]
   const params = {
     rpcids,
     'source-path': '/',
@@ -65,8 +65,9 @@ export const getTranslateData = async (
     rt: 'c',
   }
 
-  const fullUrl =
-    url + '/_/TranslateWebserverUi/data/batchexecute?' + stringify(params)
+  const fullUrl = `${url}/_/TranslateWebserverUi/data/batchexecute?${stringify(
+    params,
+  )}`
 
   // 设置是否是移动端的请求头
   const _headers = { ...DEFAULT_HEADERS }
@@ -113,7 +114,7 @@ export const formatBodyToRawResult = (body: string) => {
   // 找到第一个数组
   const firstJson = rawBody.slice(
     firstLen.length,
-    parseInt(firstLen) + firstLen.length
+    parseInt(firstLen) + firstLen.length,
   )
 
   const rawResult = JSON.parse(firstJson)
@@ -148,7 +149,7 @@ export const checkFromAndTo = (options: Options): boolean => {
   }
 }
 
-function processDefault(data: any[]): DefaultResult {
+function processDefault (data: any[]): DefaultResult {
   const result = {} as DefaultResult
   const rawResultArr = data[1][0][0][5]
   if (rawResultArr) {
@@ -158,9 +159,9 @@ function processDefault(data: any[]): DefaultResult {
   }
   return result
 }
-function processWord(data: any[]): WordResult | never {
+function processWord (data: any[]): WordResult | never {
   if (!data.length) {
-    throw new Error(ErrorCode['NO_RESULT'])
+    throw new Error(ErrorCode.NO_RESULT)
   }
   const result: WordResult = {
     text: data[0][0],

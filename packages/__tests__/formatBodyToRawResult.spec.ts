@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { ErrorCode } from '../types/index'
 import {
   getTranslateData,
@@ -36,7 +36,7 @@ describe('formatBodyToRawResult', async () => {
   })
   it.skip('should get translate data with long sentences', async () => {
     const res = await getTranslateData(
-      '床前明月光，疑是地上霜。举头望明月，低头思故乡。'
+      '床前明月光，疑是地上霜。举头望明月，低头思故乡。',
     )
     const data = formatBodyToRawResult(res)
     expect(data).toMatchSnapshot()

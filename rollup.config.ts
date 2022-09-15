@@ -16,5 +16,5 @@ module.exports = {
       file: pkg.main,
     },
   ],
-  plugins: [visualizer(), terser(), typescript(),gzipPlugin()],
+  plugins: [visualizer(), terser(), typescript(), gzipPlugin()],
 }
