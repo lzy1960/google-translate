@@ -6,15 +6,17 @@ import {
   ErrorCode,
   RpcIds,
   Result,
-} from '../types/index'
+  RcpIdsKeys,
+  DefaultResult,
+  WordResult,
+} from '../types'
 import { Language } from '../types/language'
-import { RcpIdsKeys, DefaultResult, WordResult } from '../types/index'
 import { extend } from '../shared'
 
 const DEFAULT_OPTIONS: Options = {
   from: 'auto',
   to: 'en',
-  tld: 'cn',
+  tld: 'com',
   type: 'default',
   isMobile: false,
 }

@@ -11,7 +11,7 @@ describe('word', () => {
     const res = await getTranslateData('你好', {
       from: 'zh-CN',
       to: 'en',
-      tld: 'cn',
+      tld: 'com',
       type: 'word',
     })
     const data = formatBodyToRawResult(res)
@@ -21,7 +21,7 @@ describe('word', () => {
     const res = await translate('你好', {
       from: 'zh-CN',
       to: 'en',
-      tld: 'cn',
+      tld: 'com',
       type: 'word',
     })
     expect(res).toStrictEqual({
@@ -54,7 +54,7 @@ describe('word', () => {
     const fn = translate('abcd', {
       from: 'zh-CN',
       to: 'en',
-      tld: 'cn',
+      tld: 'com',
       type: 'word',
     })
     await expect(fn).rejects.toThrowError(ErrorCode.NO_RESULT)

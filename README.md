@@ -51,7 +51,7 @@
    const options = {
     from: 'auto',
     to: 'en',
-    tld: 'cn',
+    tld: 'com',
     type: 'default'
    }
    const res = await translate('你好', options)
@@ -68,7 +68,7 @@
    {
     from: 'auto', // 源语言
     to: 'en', // 目标语言
-    tld: 'cn', // 服务地址
+    tld: 'com', // 服务地址
     type: 'default', // 类型 'default' / 'word'
     isMobile: false // TODO:是否是移动端(移动端和pc端的返回值不一样)
    }
