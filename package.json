@@ -1,6 +1,6 @@
 {
   "name": "@lzy1960/google-translate",
-  "version": "0.3.0",
+  "version": "0.3.2-beta.19",
   "description": "Translate api for Google Translate",
   "main": "lib/guide-google-translate.mjs.js",
   "common": "lib/guide-google-translate.cjs",
@@ -12,7 +12,7 @@
     "build": "rollup -c rollup.config.ts",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "release": "bumpp package.json --commit --push --tag && pnpm -r publish --access public",
+    "release": "bumpp package.json --commit --push --tag",
     "lint": "eslint ."
   },
   "type": "module",
@@ -33,9 +33,6 @@
   "repository": {
     "type": "github",
     "url": "git://github.com/lzy1960/google-translate.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@lzy1960"
   },
   "license": "MIT",
   "devDependencies": {

@@ -5,7 +5,7 @@
 <div align="center">
 
 [![NPM version][npm-image]][npm-url] [![NPM downloads][download-image]][download-url] [![codecov][codecov-image]][codecov-url]
-[![Maintainability][maintainability-image]][maintainability-url] [![Language grade: JavaScript][lgtm-image]][lgtm-url]
+[![Maintainability][maintainability-image]][maintainability-url]
 
 [npm-image]: http://img.shields.io/npm/v/@lzy1960/google-translate.svg
 [npm-url]: http://npmjs.org/package/@lzy1960/google-translate
@@ -17,8 +17,6 @@
 [maintainability-url]: https://codeclimate.com/github/lzy1960/google-translate/maintainability
 [oscs-image]: https://www.oscs1024.com/platform/badge/lzy1960/google-translate.svg?size=small
 [oscs-url]: https://www.oscs1024.com/project/lzy1960/google-translate?ref=badge_small
-[lgtm-image]: https://img.shields.io/lgtm/grade/javascript/g/lzy1960/google-translate.svg?logo=lgtm&logoWidth=18
-[lgtm-url]: https://lgtm.com/projects/g/lzy1960/google-translate/context:javascript
 
 [![OSCS Status][oscs-image]][oscs-url]
 
