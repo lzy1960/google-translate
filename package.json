@@ -34,6 +34,9 @@
     "type": "github",
     "url": "git://github.com/lzy1960/google-translate.git"
   },
+  "publishConfig": {
+    "@lzy1960:registry": "https://npm.pkg.github.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "@lzy1960/eslint-config": "^0.0.14",
