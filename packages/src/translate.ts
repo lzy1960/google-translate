@@ -105,6 +105,7 @@ export const getTranslateData = async (
     })
     return res.text()
   } catch (error) {
+    console.log('error', error)
     throw new Error(ErrorCode.BAD_REQUEST)
   }
 }
@@ -162,7 +163,7 @@ function processDefault (data: any[]): DefaultResult {
   return result
 }
 function processWord (data: any[]): WordResult | never {
-  if (!data.length) {
+  if (!data.length || !data[0]) {
     throw new Error(ErrorCode.NO_RESULT)
   }
   const result: WordResult = {

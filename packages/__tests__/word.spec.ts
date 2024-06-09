@@ -28,7 +28,7 @@ describe('word', () => {
       text: '你好!',
       common: [
         {
-          type: '感叹词',
+          type: null,
           words: [
             {
               word: 'Hello!',

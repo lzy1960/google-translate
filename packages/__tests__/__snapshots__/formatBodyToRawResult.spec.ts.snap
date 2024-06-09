@@ -25,13 +25,13 @@ exports[`formatBodyToRawResult > should fetch google api and pick up translate u
       ],
       2,
     ],
+    null,
+    null,
     [
-      [
-        "你好",
-        null,
-        null,
-        2,
-      ],
+      "你好",
+      "auto",
+      "en",
+      true,
     ],
   ],
   [
@@ -48,30 +48,16 @@ exports[`formatBodyToRawResult > should fetch google api and pick up translate u
             null,
             null,
             null,
-            [
-              [
-                "Hello",
-                [
-                  4,
-                  5,
-                  11,
-                ],
-              ],
-              [
-                "Hi",
-                [
-                  4,
-                ],
-              ],
-              [
-                "Hello there",
-                [
-                  4,
-                ],
-              ],
-            ],
+            null,
+            null,
+            "你好",
+            4,
           ],
         ],
+        null,
+        null,
+        null,
+        [],
       ],
     ],
     "en",
@@ -94,7 +80,7 @@ exports[`formatBodyToRawResult > should fetch google api and pick up translate u
     [
       [
         [
-          "感叹词",
+          null,
           [
             [
               "Hello!",
@@ -128,11 +114,12 @@ exports[`formatBodyToRawResult > should fetch google api and pick up translate u
           ],
           "en",
           "zh-CN",
+          9,
         ],
       ],
       3,
     ],
-    null,
+    "Nǐ hǎo",
     null,
     "zh-CN",
     1,
@@ -162,121 +149,21 @@ exports[`formatBodyToRawResult > should get translate data with confusing punctu
             ],
           ],
         ],
-      ],
-      24,
-    ],
-    [
-      [
-        "这,...是,..什.么???？",
-        null,
-        null,
-        16,
-      ],
-      [
-        "12123123",
-        null,
-        16,
-        24,
-      ],
-    ],
-  ],
-  [
-    [
-      [
-        null,
-        null,
-        null,
-        null,
-        null,
         [
-          [
-            "what is this????",
-            null,
-            null,
-            null,
-            [
-              [
-                "what is this????",
-                [
-                  2,
-                ],
-              ],
-              [
-                "What's this????",
-                [
-                  4,
-                ],
-              ],
-              [
-                "This, ... yes, .. ??? ????",
-                [
-                  5,
-                ],
-              ],
-              [
-                "This, ... yes, .. ??????",
-                [
-                  11,
-                ],
-              ],
-            ],
-          ],
-          [
-            "12123123",
-            null,
-            true,
-            null,
-            [
-              [
-                "12123123",
-                [
-                  5,
-                ],
-              ],
-              [
-                "1212313",
-                [
-                  11,
-                ],
-              ],
-            ],
-          ],
-        ],
-        "zh-CN",
-      ],
-    ],
-    "en",
-    1,
-    "zh-CN",
-    [
-      "这,...是,..什.么???？12123123",
-      "auto",
-      "en",
-      true,
-    ],
-  ],
-  "zh-CN",
-]
-`;
-
-exports[`formatBodyToRawResult > should get translate data with confusing punctuation 2`] = `
-[
-  [
-    "Zhè,... Shì,.. Shén. Me????12123123",
-    null,
-    "zh-CN",
-    [
-      [
-        [
-          0,
+          1,
           [
             [
               [
                 null,
                 16,
               ],
+              [
+                16,
+                24,
+              ],
             ],
             [
+              false,
               true,
             ],
           ],
@@ -284,19 +171,13 @@ exports[`formatBodyToRawResult > should get translate data with confusing punctu
       ],
       24,
     ],
+    null,
+    null,
     [
-      [
-        "这,...是,..什.么???？",
-        null,
-        null,
-        16,
-      ],
-      [
-        "12123123",
-        null,
-        16,
-        24,
-      ],
+      "这,...是,..什.么???？12123123",
+      "auto",
+      "en",
+      true,
     ],
   ],
   [
@@ -309,59 +190,30 @@ exports[`formatBodyToRawResult > should get translate data with confusing punctu
         null,
         [
           [
-            "what is this????",
+            "What's this????",
             null,
             null,
             null,
-            [
-              [
-                "what is this????",
-                [
-                  2,
-                ],
-              ],
-              [
-                "What's this????",
-                [
-                  4,
-                ],
-              ],
-              [
-                "This, ... yes, .. ??? ????",
-                [
-                  5,
-                ],
-              ],
-              [
-                "This, ... yes, .. ??????",
-                [
-                  11,
-                ],
-              ],
-            ],
+            null,
+            null,
+            "这,...是,..什.么???？",
+            4,
           ],
           [
             "12123123",
             null,
             true,
             null,
-            [
-              [
-                "12123123",
-                [
-                  5,
-                ],
-              ],
-              [
-                "1212313",
-                [
-                  11,
-                ],
-              ],
-            ],
+            null,
+            null,
+            "12123123",
+            5,
           ],
         ],
         "zh-CN",
+        null,
+        null,
+        [],
       ],
     ],
     "en",
@@ -400,22 +252,35 @@ exports[`formatBodyToRawResult > should get translate data with long sentences 1
             ],
           ],
         ],
+        [
+          1,
+          [
+            [
+              [
+                null,
+                12,
+              ],
+              [
+                12,
+                24,
+              ],
+            ],
+            [
+              false,
+              true,
+            ],
+          ],
+        ],
       ],
       24,
     ],
+    null,
+    null,
     [
-      [
-        "床前明月光，疑是地上霜。",
-        null,
-        null,
-        12,
-      ],
-      [
-        "举头望明月，低头思故乡。",
-        null,
-        12,
-        24,
-      ],
+      "床前明月光，疑是地上霜。举头望明月，低头思故乡。",
+      "auto",
+      "en",
+      true,
     ],
   ],
   [
@@ -428,46 +293,30 @@ exports[`formatBodyToRawResult > should get translate data with long sentences 1
         null,
         [
           [
-            "The bright moonlight in front of the bed was suspected to be frost on the ground.",
+            "The moonlight in front of the bed is suspected to be on the ground.",
             null,
             null,
             null,
-            [
-              [
-                "The bright moonlight in front of the bed was suspected to be frost on the ground.",
-                [
-                  5,
-                ],
-              ],
-              [
-                "The bright moonlight in front of the bed seemed to be frost on the ground.",
-                [
-                  11,
-                ],
-              ],
-            ],
+            null,
+            null,
+            "床前明月光，疑是地上霜。",
+            5,
           ],
           [
-            "Raise your head to look at the bright moon, and bow your head to think of your hometown.",
+            "Looking at the Mingyue, he bowed his head to his hometown.",
             null,
             true,
             null,
-            [
-              [
-                "Raise your head to look at the bright moon, and bow your head to think of your hometown.",
-                [
-                  5,
-                ],
-              ],
-              [
-                "Raise your head to look at the bright moon, bow your head to think of your hometown.",
-                [
-                  11,
-                ],
-              ],
-            ],
+            null,
+            null,
+            "举头望明月，低头思故乡。",
+            5,
           ],
         ],
+        null,
+        null,
+        null,
+        [],
       ],
     ],
     "en",
@@ -509,13 +358,13 @@ exports[`formatBodyToRawResult > should get translate data with punctuation 1`] 
       ],
       12,
     ],
+    null,
+    null,
     [
-      [
-        "今天，我看到一个程序员！",
-        null,
-        null,
-        12,
-      ],
+      "今天，我看到一个程序员！",
+      "auto",
+      "en",
+      true,
     ],
   ],
   [
@@ -532,22 +381,16 @@ exports[`formatBodyToRawResult > should get translate data with punctuation 1`] 
             null,
             null,
             null,
-            [
-              [
-                "Today, I see a programmer!",
-                [
-                  5,
-                ],
-              ],
-              [
-                "Today, I saw a programmer!",
-                [
-                  11,
-                ],
-              ],
-            ],
+            null,
+            null,
+            "今天，我看到一个程序员！",
+            5,
           ],
         ],
+        null,
+        null,
+        null,
+        [],
       ],
     ],
     "en",
@@ -650,6 +493,15 @@ exports[`formatBodyToRawResult > should get translate data with space 1`] = `
     null,
     null,
     "zh-CN",
+    null,
+    null,
+    null,
+    [
+      " ",
+      "auto",
+      "en",
+      true,
+    ],
   ],
   [
     [
@@ -660,8 +512,20 @@ exports[`formatBodyToRawResult > should get translate data with space 1`] = `
         null,
         null,
         [
-          [],
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            " ",
+          ],
         ],
+        null,
+        null,
+        null,
+        [],
       ],
     ],
     "en",

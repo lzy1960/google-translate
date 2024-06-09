@@ -18,9 +18,9 @@ describe('translate', async () => {
     expect(res3.text).toBe('Hello')
     expect(res3.pronunciation).toBe('Nǐ hǎo')
   })
-  it.skip('should translate with punctuation', async () => {
+  it('should translate with punctuation', async () => {
     const res = await translate('今天，我看到一个程序员！')
-    expect(res.text).toBe('Today, I saw a programmer!')
+    expect(res.text).toBe('Today, I see a programmer!')
   })
   it('should translate without char', async () => {
     const res = await translate('')
@@ -35,18 +35,18 @@ describe('translate', async () => {
     const res4 = await translate('  这是什么？  ')
     expect(res1.text).toEqual(res2.text)
     expect(res2.text).toEqual(res3.text)
-    expect(res4.text).toBe('what is this?')
+    expect(res4.text).toBe('What\'s this?')
   })
   it('should translate with confusing punctuation', async () => {
     const res = await translate('这,...是,..什.么???？12123123')
-    expect(res.text).toBe('what is this???? 12123123')
+    expect(res.text).toBe('What\'s this???? 12123123')
   })
-  it.skip('should translate long sentences', async () => {
+  it('should translate long sentences', async () => {
     const res = await translate(
       '床前明月光，疑是地上霜。举头望明月，低头思故乡。',
     )
     expect(res.text).toBe(
-      'The bright moonlight in front of the bed was suspected to be frost on the ground. Raise your head to look at the bright moon, and bow your head to think of your hometown.',
+      'The moonlight in front of the bed is suspected to be on the ground. Looking at the Mingyue, he bowed his head to his hometown.',
     )
     const resMobile = await translate(
       '床前明月光，疑是地上霜。举头望明月，低头思故乡。',
