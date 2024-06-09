@@ -35,7 +35,7 @@
     "url": "git://github.com/lzy1960/google-translate.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@lzy1960"
+    "@lzy1960:registry": "https://npm.pkg.github.com"
   },
   "license": "MIT",
   "devDependencies": {
