@@ -1,6 +1,6 @@
 {
   "name": "@lzy1960/google-translate",
-  "version": "0.3.1",
+  "version": "0.3.2-beta.0",
   "description": "Translate api for Google Translate",
   "main": "lib/guide-google-translate.mjs.js",
   "common": "lib/guide-google-translate.cjs",
@@ -33,9 +33,6 @@
   "repository": {
     "type": "github",
     "url": "git://github.com/lzy1960/google-translate.git"
-  },
-  "publishConfig": {
-    "@lzy1960:registry": "https://npm.pkg.github.com"
   },
   "license": "MIT",
   "devDependencies": {
