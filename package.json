@@ -1,6 +1,6 @@
 {
   "name": "@lzy1960/google-translate",
-  "version": "0.3.2-beta.14",
+  "version": "0.3.2-beta.15",
   "description": "Translate api for Google Translate",
   "main": "lib/guide-google-translate.mjs.js",
   "common": "lib/guide-google-translate.cjs",
