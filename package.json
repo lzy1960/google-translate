@@ -12,7 +12,7 @@
     "build": "rollup -c rollup.config.ts",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "release": "bumpp package.json --commit --push --tag && pnpm -r publish --access public",
+    "release": "bumpp package.json --commit --push --tag",
     "lint": "eslint ."
   },
   "type": "module",
