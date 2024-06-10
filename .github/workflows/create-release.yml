@@ -1,24 +1,46 @@
-name: Create release
+name: Release
 
 on:
   push:
     tags:
-      - v*
-
-permissions:
-  contents: write
+      - 'v*'
 
 jobs:
   release:
-    name: Release pushed tag
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Create release
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate release notes
+        id: generate_release_notes
+        run: |
+          echo "## Release Notes" > release_notes.txt
+          echo "" >> release_notes.txt
+          git log -1 --pretty=format:"%h - %an: %s" >> release_notes.txt
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}
-        run: |
-          gh release create "$tag" \
-              --repo="$GITHUB_REPOSITORY" \
-              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
-              --generate-notes
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body_path: ./release_notes.txt
+          draft: false
+          prerelease: false
+
+      - name: Publish package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
