@@ -9,8 +9,8 @@ import {
   RcpIdsKeys,
   DefaultResult,
   WordResult,
-} from '../types'
-import { Language } from '../types/language'
+} from '../../types'
+import { Language } from '../../types/language'
 import { extend } from '../shared'
 
 const DEFAULT_OPTIONS: Options = {

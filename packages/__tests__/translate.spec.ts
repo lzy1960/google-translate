@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { translate } from '../src/index'
-import { LanguageKey } from '../types/language'
-import { DefaultResult } from '../types/index'
+import { LanguageKey } from '../../types/language'
+import { DefaultResult } from '../../types/index'
 
 describe('translate', async () => {
   it('should translate more words from zh-CN to en', async () => {

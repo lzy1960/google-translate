@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { ErrorCode } from '../types/index'
+import { ErrorCode } from '../../types/index'
 import {
   getTranslateData,
   formatBodyToRawResult,

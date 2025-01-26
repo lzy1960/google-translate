@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { checkFromAndTo } from '../src/translate'
-import { LanguageKey } from '../types/language'
+import { LanguageKey } from '../../types/language'
 
 describe('languages', () => {
   it('should return boolean when called', () => {

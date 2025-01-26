@@ -4,12 +4,13 @@
   "description": "Translate api for Google Translate",
   "main": "lib/guide-google-translate.mjs.js",
   "common": "lib/guide-google-translate.cjs",
-  "directories": {
-    "example": "example",
-    "lib": "lib"
-  },
+  "files": [
+    "lib",
+    "types"
+  ],
   "scripts": {
-    "build": "rollup -c rollup.config.ts",
+    "build": "rollup -c rollup.config.ts && pnpm build:tsc",
+    "build:tsc": "tsc --project tsconfig.build.json",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "release": "bumpp package.json --commit --push --tag",
