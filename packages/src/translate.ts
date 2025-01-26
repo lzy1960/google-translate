@@ -11,7 +11,7 @@ import {
   WordResult,
 } from '../../types'
 import { Language } from '../../types/language'
-import { extend } from '../shared'
+import { createProxyAgent, extend } from '../shared'
 
 const DEFAULT_OPTIONS: Options = {
   from: 'auto',
@@ -102,6 +102,7 @@ export const getTranslateData = async (
       method: 'POST',
       body: formData,
       headers: _headers,
+      agent: _options.proxy ? createProxyAgent(_options.proxy) : undefined,
     })
     return res.text()
   } catch (error) {

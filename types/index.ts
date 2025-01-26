@@ -6,6 +6,7 @@ export type Options = {
   tld?: string
   type?: Lowercase<RcpIdsKeys>
   isMobile?: boolean
+  proxy?: string
 }
 
 export type Result = DefaultResult | WordResult
