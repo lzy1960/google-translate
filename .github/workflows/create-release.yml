@@ -41,21 +41,42 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate release notes
-        id: generate_release_notes
+      - name: Get commits between tags
+        id: commits
         run: |
-          echo "## Release Notes" > release_notes.txt
-          echo "" >> release_notes.txt
-          git log -1 --pretty=format:"%h - %an: %s" >> release_notes.txt
+          # 获取最近两个 tag 之间的提交
+          TAGS=$(git tag -l 'v*' | sort -V | tail -n 2)
+          FROM_TAG=$(echo "$TAGS" | head -n 1)
+          TO_TAG=$(echo "$TAGS" | tail -n 1)
 
-      - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "Comparing commits between $FROM_TAG and $TO_TAG"
+
+          # 获取提交日志并根据类型格式化
+          COMMITS=$(git log --oneline $FROM_TAG..$TO_TAG)
+
+          # 格式化并按提交类型分组
+          FEAT_COMMITS=$(echo "$COMMITS" | grep -i "^feat" | sed 's/^feat/🎉 Feature:/')
+          FIX_COMMITS=$(echo "$COMMITS" | grep -i "^fix" | sed 's/^fix/🐞 Bug Fix:/')
+          CHORE_COMMITS=$(echo "$COMMITS" | grep -i "^chore" | sed 's/^chore/🔧 Chore:/')
+          DOC_COMMITS=$(echo "$COMMITS" | grep -i "^docs" | sed 's/^docs/📚 Documentation:/')
+
+          # 组合成一个完整的 release note
+          RELEASE_NOTES="## Changelog\n\n"
+          RELEASE_NOTES="${RELEASE_NOTES}\n### Features\n${FEAT_COMMITS}\n"
+          RELEASE_NOTES="${RELEASE_NOTES}\n### Bug Fixes\n${FIX_COMMITS}\n"
+          RELEASE_NOTES="${RELEASE_NOTES}\n### Chores\n${CHORE_COMMITS}\n"
+          RELEASE_NOTES="${RELEASE_NOTES}\n### Documentation\n${DOC_COMMITS}\n"
+
+          # 输出 release notes 作为 action output
+          echo "::set-output name=release_notes::$RELEASE_NOTES"
+
+      - name: Generate Release Notes
+        run: |
+          echo "Release Notes for ${{ steps.commits.outputs.release_notes }}"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body_path: ./release_notes.txt
-          draft: false
-          prerelease: false
+          files: |
+            dist/*
+          release_notes: ${{ steps.commits.outputs.release_notes }}
