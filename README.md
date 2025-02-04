@@ -15,12 +15,6 @@
 [codecov-url]: https://codecov.io/gh/lzy1960/google-translate
 [maintainability-image]: https://api.codeclimate.com/v1/badges/185da742ecab918b1a57/maintainability
 [maintainability-url]: https://codeclimate.com/github/lzy1960/google-translate/maintainability
-[oscs-image]: https://www.oscs1024.com/platform/badge/lzy1960/google-translate.svg?size=small
-[oscs-url]: https://www.oscs1024.com/project/lzy1960/google-translate?ref=badge_small
-
-[![OSCS Status][oscs-image]][oscs-url]
-
-感谢开源社区 OSCS 的关注！
 
 </div>
 
@@ -110,9 +104,10 @@
 
 ## options 参数说明
 
-| 参数 | 说明     | 类型                | 默认值    |
-| ---- | -------- | ------------------- | --------- |
-| from | 源语言   | string              | 'auto'    |
-| to   | 目标语言 | string              | 'en'      |
-| tld  | 地区     | string              | 'cn'      |
-| type | 类型     | `default` \| `word` | 'default' |
+| 参数  | 说明     | 类型                | 默认值    |
+| ----- | -------- | ------------------- | --------- |
+| from  | 源语言   | string              | 'auto'    |
+| to    | 目标语言 | string              | 'en'      |
+| tld   | 地区     | string              | 'com'     |
+| type  | 类型     | `default` \| `word` | 'default' |
+| proxy | 代理地址 | string              | `--`      |
