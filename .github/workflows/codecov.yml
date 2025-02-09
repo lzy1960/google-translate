@@ -10,10 +10,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
+      - name: Install pnpm
+        run: npm install -g pnpm
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
       - name: Run tests and collect coverage
-        run: npm run coverage
+        run: pnpm run coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:

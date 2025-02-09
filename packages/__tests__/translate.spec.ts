@@ -21,7 +21,7 @@ describe('translate', async () => {
   })
   it('should translate with punctuation', async () => {
     const res = await translate('今天，我看到一个程序员！')
-    expect(res.text).toBe('Today, I see a programmer!')
+    expect(res.text).toBe('Today, I saw a programmer!')
   })
   it('should translate without char', async () => {
     const res = await translate('')
@@ -47,7 +47,7 @@ describe('translate', async () => {
       '床前明月光，疑是地上霜。举头望明月，低头思故乡。',
     )
     expect(res.text).toBe(
-      'The moonlight in front of the bed is suspected to be on the ground. Looking at the Mingyue, he bowed his head to his hometown.',
+      'The bright moonlight in front of the bed is suspected to be frost on the ground. Looking up at the bright moon, looking down at the hometown.',
     )
     const resMobile = await translate(
       '床前明月光，疑是地上霜。举头望明月，低头思故乡。',
@@ -58,7 +58,7 @@ describe('translate', async () => {
       },
     )
     expect(resMobile.text).toBe(
-      'The moonlight in front of the bed is suspected to be on the ground. Looking at the Mingyue, he bowed his head to his hometown.',
+      'The bright moonlight in front of the bed is suspected to be frost on the ground. Looking up at the bright moon, looking down at the hometown.',
     )
   })
   it('should translate from en to zh-CN', async () => {

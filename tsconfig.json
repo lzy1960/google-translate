@@ -8,6 +8,12 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "declaration": true, // 关键：生成 .d.ts
+    "declarationMap": true, // 可选：生成声明映射
+    "outDir": "dist",
+  },
+  "include": [
+    "packages/src/*"
+  ]
 }

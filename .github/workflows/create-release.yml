@@ -52,20 +52,28 @@ jobs:
           echo "Comparing commits between $FROM_TAG and $TO_TAG"
 
           # 获取提交日志并根据类型格式化
-          COMMITS=$(git log --oneline $FROM_TAG..$TO_TAG)
+          COMMITS=$(git log --oneline $FROM_TAG..$TO_TAG^ --pretty=format:"%s")
 
           # 格式化并按提交类型分组
-          FEAT_COMMITS=$(echo "$COMMITS" | grep -i "^feat" | sed 's/^feat/🎉 Feature:/')
-          FIX_COMMITS=$(echo "$COMMITS" | grep -i "^fix" | sed 's/^fix/🐞 Bug Fix:/')
-          CHORE_COMMITS=$(echo "$COMMITS" | grep -i "^chore" | sed 's/^chore/🔧 Chore:/')
-          DOC_COMMITS=$(echo "$COMMITS" | grep -i "^docs" | sed 's/^docs/📚 Documentation:/')
+          FEAT_COMMITS=$(echo "$COMMITS" | grep -i "^feat" | sed 's/^feat: //')
+          FIX_COMMITS=$(echo "$COMMITS" | grep -i "^fix" | sed 's/^fix: //')
+          CHORE_COMMITS=$(echo "$COMMITS" | grep -i "^chore" | sed 's/^chore: //')
+          DOC_COMMITS=$(echo "$COMMITS" | grep -i "^docs" | sed 's/^docs: //')
 
           # 组合成一个完整的 release note
-          RELEASE_NOTES="## Changelog\n\n"
-          RELEASE_NOTES="${RELEASE_NOTES}\n### Features\n${FEAT_COMMITS}\n"
-          RELEASE_NOTES="${RELEASE_NOTES}\n### Bug Fixes\n${FIX_COMMITS}\n"
-          RELEASE_NOTES="${RELEASE_NOTES}\n### Chores\n${CHORE_COMMITS}\n"
-          RELEASE_NOTES="${RELEASE_NOTES}\n### Documentation\n${DOC_COMMITS}\n"
+          RELEASE_NOTES=""
+          if [ -n "$FEAT_COMMITS" ]; then
+            RELEASE_NOTES="${RELEASE_NOTES}\n### 🎉 Features\n${FEAT_COMMITS}\n"
+          fi
+          if [ -n "$FIX_COMMITS" ]; then
+            RELEASE_NOTES="${RELEASE_NOTES}\n### 🐞 Bug Fixes\n${FIX_COMMITS}\n"
+          fi
+          if [ -n "$CHORE_COMMITS" ]; then
+            RELEASE_NOTES="${RELEASE_NOTES}\n### 🔧 Chores\n${CHORE_COMMITS}\n"
+          fi
+          if [ -n "$DOC_COMMITS" ]; then
+            RELEASE_NOTES="${RELEASE_NOTES}\n### 📚 Documentation\n${DOC_COMMITS}\n"
+          fi
 
           # 输出 release notes 作为 action output
           echo "::set-output name=release_notes::$RELEASE_NOTES"
