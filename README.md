@@ -18,6 +18,8 @@
 
 </div>
 
+<p align="center">简体中文 | <a href="README-en.md">English</a></p>
+
 ## 项目说明
 
 - TDD 开发流程
