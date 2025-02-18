@@ -1,4 +1,4 @@
-export type LanguageKey = keyof typeof Language
+export type LanguageKey = keyof typeof Language;
 
 export enum Language {
   'auto' = 'Automatic',

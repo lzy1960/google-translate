@@ -13,7 +13,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "release": "bumpp package.json --commit --push --tag",
-    "lint": "eslint ."
+    "lint": "eslint ./{packages,types}/* --fix"
   },
   "type": "module",
   "sideEffects": false,

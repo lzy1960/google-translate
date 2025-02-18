@@ -1,5 +1,6 @@
-import fetch from 'node-fetch'
-import { stringify } from 'qs'
+import fetch from 'node-fetch';
+import { stringify } from 'qs';
+
 import {
   Options,
   BatchExecute,
@@ -8,9 +9,9 @@ import {
   Result,
   RcpIdsKeys,
   DefaultResult,
-} from '../../types'
-import { Language } from '../../types/language'
-import { createProxyAgent, extend } from '../shared'
+} from '../../types';
+import { Language } from '../../types/language';
+import { createProxyAgent, extend } from '../shared';
 
 const DEFAULT_OPTIONS: Options = {
   from: 'auto',
@@ -18,42 +19,41 @@ const DEFAULT_OPTIONS: Options = {
   tld: 'com',
   type: 'default',
   isMobile: false,
-  proxy: 'http://localhost:10808'
-}
-const batchKey = 'x-goog-batchexecute-bgr'
+};
+const batchKey = 'x-goog-batchexecute-bgr';
 const DEFAULT_HEADERS = {
   'User-Agent':
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
   [batchKey]: BatchExecute.MOBILE,
-}
+};
 
 export const translate = async (
   text: string,
   options: Options = DEFAULT_OPTIONS,
 ): Promise<Result | never> => {
-  const _options = extend({}, DEFAULT_OPTIONS, options)
+  const _options = extend({}, DEFAULT_OPTIONS, options);
 
-  // 传入的from和to防错校验
-  const isRightLanguage = checkFromAndTo(options)
+  // 传入的 from 和 to 防错校验
+  const isRightLanguage = checkFromAndTo(options);
   if (!isRightLanguage) {
-    throw new Error('not support this language')
+    throw new Error('not support this language');
   }
 
-  const res = await getTranslateData(text, _options)
-  const data = formatBodyToRawResult(res)
-  const result = getResult(data, _options)
+  const res = await getTranslateData(text, _options);
+  const data = formatBodyToRawResult(res);
+  const result = getResult(data, _options);
 
-  return result
-}
+  return result;
+};
 
 export const getTranslateData = async (
   text: string,
   options: Options = DEFAULT_OPTIONS,
 ): Promise<string | never> => {
-  const _options = extend({}, DEFAULT_OPTIONS, options)
-  const { from, to, tld, type } = _options
-  const url = `https://translate.google.${tld}`
-  const rpcids = RpcIds[type?.toUpperCase() as RcpIdsKeys]
+  const _options = extend({}, DEFAULT_OPTIONS, options);
+  const { from, to, tld, type } = _options;
+  const url = `https://translate.google.${tld}`;
+  const rpcids = RpcIds[type?.toUpperCase() as RcpIdsKeys];
   const params = {
     rpcids,
     'source-path': '/',
@@ -65,14 +65,14 @@ export const getTranslateData = async (
     'soc-device': '1',
     _reqid: '248103',
     rt: 'c',
-  }
+  };
 
   const fullUrl = `${url}/_/TranslateWebserverUi/data/batchexecute?${stringify(
     params,
-  )}`
+  )}`;
 
   // 设置是否是移动端的请求头
-  const _headers = { ...DEFAULT_HEADERS }
+  const _headers = { ...DEFAULT_HEADERS };
   // if (_options.isMobile) {
   //   _headers[batchKey] = BatchExecute['MOBILE']
   // } else {
@@ -91,11 +91,11 @@ export const getTranslateData = async (
         'generic',
       ],
     ],
-  ]
+  ];
 
   const formData = new URLSearchParams({
     'f.req': JSON.stringify(_formData),
-  })
+  });
 
   try {
     const res = await fetch(fullUrl, {
@@ -103,60 +103,60 @@ export const getTranslateData = async (
       body: formData,
       headers: _headers,
       agent: _options.proxy ? createProxyAgent(_options.proxy) : undefined,
-    })
-    return res.text()
+    });
+    return res.text();
   } catch (error) {
-    console.log('error', error)
-    throw new Error(ErrorCode.BAD_REQUEST)
+    console.log('error', error);
+    throw new Error(ErrorCode.BAD_REQUEST);
   }
-}
+};
 
 export const formatBodyToRawResult = (body: string) => {
-  const rawBody = body.slice(6)
+  const rawBody = body.slice(6);
   // 先找到第一个数字
-  const firstLen = /^\d+/.exec(rawBody)![0]
+  const firstLen = (/^\d+/).exec(rawBody)![0];
   // 找到第一个数组
   const firstJson = rawBody.slice(
     firstLen.length,
     parseInt(firstLen) + firstLen.length,
-  )
+  );
 
-  const rawResult = JSON.parse(firstJson)
-  return JSON.parse(rawResult[0][2])
-}
+  const rawResult = JSON.parse(firstJson);
+  return JSON.parse(rawResult[0][2]);
+};
 
 export const getResult = (data: any[] | null, options: Options): Result => {
-  const _options = extend({}, DEFAULT_OPTIONS, options)
-  const { from, type } = _options
+  const _options = extend({}, DEFAULT_OPTIONS, options);
+  const { from, type } = _options;
 
   if (data) {
     switch (type) {
       case 'default':
-        return processDefault(data)
+        return processDefault(data);
     }
   }
   return {
     from,
     pronunciation: null,
     text: '',
-  }
-}
+  };
+};
 export const checkFromAndTo = (options: Options): boolean => {
-  const { from, to } = options
+  const { from, to } = options;
   if (from in Language && to in Language) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
-}
+};
 
 function processDefault (data: any[]): DefaultResult {
-  const result = {} as DefaultResult
-  const rawResultArr = data[1][0][0][5]
+  const result = {} as DefaultResult;
+  const rawResultArr = data[1][0][0][5];
   if (rawResultArr) {
-    result.from = data[0][2]
-    result.text = rawResultArr.map((item: string[]) => item[0]).join(' ')
-    result.pronunciation = data[0][0]
+    result.from = data[0][2];
+    result.text = rawResultArr.map((item: string[]) => item[0]).join(' ');
+    result.pronunciation = data[0][0];
   }
-  return result
+  return result;
 }
