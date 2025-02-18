@@ -44,20 +44,9 @@ jobs:
         run: pnpm install
       - name: Run Build
         run: pnpm build
-      - name: Publish to npm
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          pnpm publish --no-git-checks${{ github.ref == 'refs/heads/beta' && ' --tag beta' || '' }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Publish to GitHub Packages
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
-          pnpm publish --registry=https://npm.pkg.github.com --no-git-checks${{ github.ref == 'refs/heads/beta' && ' --tag beta' || '' }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Get commits between tags
         id: commits
+        shell: bash
         run: |
           # 获取最近两个 tag 之间的提交
           TAGS=$(git tag -l 'v*' | sort -V | tail -n 2)
@@ -103,3 +92,15 @@ jobs:
             dist/*
           release_notes: ${{ steps.commits.outputs.release_notes }}
           prerelease: ${{ github.ref == 'refs/heads/beta' }}
+      - name: Publish to npm
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          pnpm publish --no-git-checks${{ github.ref == 'refs/heads/beta' && ' --tag beta' || '' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to GitHub Packages
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+          pnpm publish --registry=https://npm.pkg.github.com --no-git-checks${{ github.ref == 'refs/heads/beta' && ' --tag beta' || '' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
