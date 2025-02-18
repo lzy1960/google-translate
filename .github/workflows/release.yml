@@ -47,13 +47,13 @@ jobs:
       - name: Publish to npm
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          pnpm publish --no-git-checks
+          pnpm publish --no-git-checks${{ github.ref == 'refs/heads/beta' && ' --tag beta' || '' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish to GitHub Packages
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
-          pnpm publish --registry=https://npm.pkg.github.com --no-git-checks
+          pnpm publish --registry=https://npm.pkg.github.com --no-git-checks${{ github.ref == 'refs/heads/beta' && ' --tag beta' || '' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Get commits between tags
@@ -61,13 +61,14 @@ jobs:
         run: |
           # 获取最近两个 tag 之间的提交
           TAGS=$(git tag -l 'v*' | sort -V | tail -n 2)
+          echo "Tags: $TAGS"
           FROM_TAG=$(echo "$TAGS" | head -n 1)
           TO_TAG=$(echo "$TAGS" | tail -n 1)
 
           echo "Comparing commits between $FROM_TAG and $TO_TAG"
 
           # 获取提交日志并根据类型格式化
-          COMMITS=$(git log --oneline $FROM_TAG..$TO_TAG --pretty=format:"%s")
+          COMMITS=$(git log --oneline $FROM_TAG..$TO_TAG^ --pretty=format:"%s")
 
           # 格式化并按提交类型分组
           FEAT_COMMITS=$(echo "$COMMITS" | grep -i "^feat" | sed 's/^feat: //')
@@ -91,7 +92,7 @@ jobs:
           fi
 
           # 输出 release notes 作为 action output
-          echo "::set-output name=release_notes::$RELEASE_NOTES"
+          echo "name=$RELEASE_NOTES" >> $GITHUB_OUTPUT
       - name: Generate Release Notes
         run: |
           echo "Release Notes for ${{ steps.commits.outputs.release_notes }}"
@@ -101,3 +102,4 @@ jobs:
           files: |
             dist/*
           release_notes: ${{ steps.commits.outputs.release_notes }}
+          prerelease: ${{ github.ref == 'refs/heads/beta' }}
