@@ -63,7 +63,7 @@ options default to:
   from: 'auto', // Source language
   to: 'en', // Target language
   tld: 'com', // Service address
-  type: 'default', // Type 'default' / 'word'
+  type: 'default', // Type 'default'
   isMobile: false // TODO: Is it a mobile terminal (the return value of the mobile terminal and the PC terminal is different)
 }
 ```
@@ -71,46 +71,19 @@ options default to:
 4.  Return to the result description
 
 ```javascript
-// default
 {
   from: "zh-CN", // Source language
   pronunciation: "Nǐ hǎo", // pronunciation
   text: "Hello" // Target language results
 }
-// word
-{
-  text: 'Hello!',
-  common: [
-    {
-      type: 'interrogation',
-      words: [
-        {
-          word: 'Hello!',
-          explains: ['Hello!', 'Hello!'],
-          frequency: 1,
-        },
-        {
-          word: 'Hi!',
-          explains: ['Hi!', 'Hello!'],
-          frequency: 1,
-        },
-        {
-          word: 'Hallo!',
-          explains: ['Hello!'],
-          frequency: 3,
-        },
-      ],
-    },
-  ],
-}
 ```
 
 ## options parameter description
 
-| Parameters | Description     | Type                | Default   |
-| ---------- | --------------- | ------------------- | --------- |
-| from       | Source Language | string              | 'auto'    |
-| to         | Target Language | string              | 'en'      |
-| tld        | Region          | string              | 'com'     |
-| type       | Type            | `default` \| `word` | 'default' |
-| proxy      | proxy address   | string              | `--`      |
+| Parameters | Description     | Type      | Default   |
+| ---------- | --------------- | --------- | --------- |
+| from       | Source Language | string    | 'auto'    |
+| to         | Target Language | string    | 'en'      |
+| tld        | Region          | string    | 'com'     |
+| type       | Type            | `default` | 'default' |
+| proxy      | proxy address   | string    | `--`      |

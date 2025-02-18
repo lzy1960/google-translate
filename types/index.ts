@@ -9,28 +9,12 @@ export type Options = {
   proxy?: string
 }
 
-export type Result = DefaultResult | WordResult
+export type Result = DefaultResult
 
 export type DefaultResult = {
   from: LanguageKey
   pronunciation: string | null
   text: string
-}
-
-export type WordResult = {
-  text: string
-  common: CommonType[]
-}
-
-type CommonType = {
-  type: string
-  words: WordExplain[]
-}
-
-type WordExplain = {
-  word: string
-  explains: string[]
-  frequency: number
 }
 
 export enum BatchExecute {
@@ -45,7 +29,6 @@ export enum ErrorCode {
 
 export enum RpcIds {
   DEFAULT = 'MkEWBc',
-  WORD = 'rPsWke',
 }
 
 export type RcpIdsKeys = keyof typeof RpcIds

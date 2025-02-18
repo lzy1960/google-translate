@@ -63,53 +63,26 @@
     from: 'auto', // 源语言
     to: 'en', // 目标语言
     tld: 'com', // 服务地址
-    type: 'default', // 类型 'default' / 'word'
+    type: 'default', // 类型 'default'
     isMobile: false // TODO:是否是移动端(移动端和pc端的返回值不一样)
    }
    ```
 
 4. 返回结果说明
    ```JS
-   // default
    {
     from: "zh-CN", // 源语言
     pronunciation: "Nǐ hǎo", // 读音
     text: "Hello" // 目标语言结果
    }
-   // word
-   {
-   text: '你好!',
-      common: [
-        {
-          type: '感叹词',
-          words: [
-            {
-              word: 'Hello!',
-              explains: ['你好!', '喂!'],
-              frequency: 1,
-            },
-            {
-              word: 'Hi!',
-              explains: ['嗨!', '你好!'],
-              frequency: 1,
-            },
-            {
-              word: 'Hallo!',
-              explains: ['你好!'],
-              frequency: 3,
-            },
-          ],
-        },
-      ],
-   }
    ```
 
 ## options 参数说明
 
-| 参数  | 说明     | 类型                | 默认值    |
-| ----- | -------- | ------------------- | --------- |
-| from  | 源语言   | string              | 'auto'    |
-| to    | 目标语言 | string              | 'en'      |
-| tld   | 地区     | string              | 'com'     |
-| type  | 类型     | `default` \| `word` | 'default' |
-| proxy | 代理地址 | string              | `--`      |
+| 参数  | 说明     | 类型      | 默认值    |
+| ----- | -------- | --------- | --------- |
+| from  | 源语言   | string    | 'auto'    |
+| to    | 目标语言 | string    | 'en'      |
+| tld   | 地区     | string    | 'com'     |
+| type  | 类型     | `default` | 'default' |
+| proxy | 代理地址 | string    | `--`      |

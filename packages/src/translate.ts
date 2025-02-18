@@ -8,7 +8,6 @@ import {
   Result,
   RcpIdsKeys,
   DefaultResult,
-  WordResult,
 } from '../../types'
 import { Language } from '../../types/language'
 import { createProxyAgent, extend } from '../shared'
@@ -19,6 +18,7 @@ const DEFAULT_OPTIONS: Options = {
   tld: 'com',
   type: 'default',
   isMobile: false,
+  proxy: 'http://localhost:10808'
 }
 const batchKey = 'x-goog-batchexecute-bgr'
 const DEFAULT_HEADERS = {
@@ -85,7 +85,7 @@ export const getTranslateData = async (
         rpcids,
         JSON.stringify([
           [text, from, to, true],
-          type === 'word' ? null : [null],
+          [null],
         ]),
         null,
         'generic',
@@ -133,9 +133,6 @@ export const getResult = (data: any[] | null, options: Options): Result => {
     switch (type) {
       case 'default':
         return processDefault(data)
-
-      case 'word':
-        return processWord(data)
     }
   }
   return {
@@ -161,23 +158,5 @@ function processDefault (data: any[]): DefaultResult {
     result.text = rawResultArr.map((item: string[]) => item[0]).join(' ')
     result.pronunciation = data[0][0]
   }
-  return result
-}
-function processWord (data: any[]): WordResult | never {
-  if (!data.length || !data[0]) {
-    throw new Error(ErrorCode.NO_RESULT)
-  }
-  const result: WordResult = {
-    text: data[0][0],
-    common: [],
-  }
-  result.common = data[0][5][0].map((item: any) => ({
-    type: item[0],
-    words: item[1].map((word: any) => ({
-      word: word[0],
-      explains: word[2],
-      frequency: word[3],
-    })),
-  }))
   return result
 }
